@@ -1,0 +1,2620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECHOVELLE — True Beauty, Never Forced</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ========== TYPOGRAPHY ========== */
+    .serif { font-family: 'Libre Baskerville', Baskerville, Georgia, serif; }
+    .sans { font-family: 'Montserrat', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Libre Baskerville', Baskerville, Georgia, serif; font-weight: 700; }
+
+    /* ========== COLOR SYSTEM ========== */
+    :root {
+      --gold: #8B7D4A;
+      --gold-light: #b5a272;
+      --gold-dark: #6d6238;
+      --cream: #faf9f7;
+      --cream-dark: #f3f1ec;
+      --charcoal: #1a1a1a;
+      --warm-gray: #6b6560;
+      --light-gray: #e8e5df;
+      --white: #ffffff;
+      --pearl-pink: #f5ede8;
+      --pearl-blue: #e8edf0;
+      --tahitian-dark: #3a3a3a;
+    }
+
+    /* ========== UTILITY ========== */
+    .container { max-width: 1600px; margin: 0 auto; padding: 0 60px; }
+    .container-wide { max-width: 1600px; margin: 0 auto; padding: 0 60px; }
+    .text-center { text-align: center; }
+    .uppercase { text-transform: uppercase; letter-spacing: 0.15em; }
+    .section-pad { padding: 100px 0; }
+    .section-pad-sm { padding: 60px 0; }
+
+    /* ========== ANNOUNCEMENT BAR ========== */
+    .announcement {
+      background: #2c3350;
+      color: #fff;
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+      position: relative;
+      z-index: 1001;
+    }
+    .announcement a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ========== HEADER / NAV (Foundrae-style) ========== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      border-bottom: none;
+      transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.3s ease;
+    }
+    .header.scrolled,
+    .header.mega-open {
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .header:hover {
+      background: var(--white);
+    }
+    .header.scrolled .main-nav > li > a,
+    .header.mega-open .main-nav > li > a,
+    .header:hover .main-nav > li > a { color: var(--charcoal); font-weight: 500; }
+    .header.scrolled .nav-icon,
+    .header.mega-open .nav-icon,
+    .header:hover .nav-icon { color: var(--charcoal); }
+    .header.scrolled .logo-img,
+    .header.mega-open .logo-img,
+    .header:hover .logo-img { filter: none; }
+    .header.header-hidden { transform: translateY(-100%); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 68px;
+    }
+    .logo-link { margin-right: 40px; flex-shrink: 0; position: relative; }
+    .logo-img { width: 250px; height: 40px; object-fit: contain; filter: brightness(0) invert(1); transition: filter 0.35s; }
+    /* Main nav — all links in one row after logo */
+    .main-nav {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+      flex: 1;
+    }
+    .main-nav > li { position: static; }
+    .main-nav > li > a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 400;
+      color: #fff;
+      transition: color 0.2s;
+      padding: 24px 0;
+      display: block;
+    }
+    .main-nav > li > a:hover,
+    .main-nav > li:hover > a { color: #fff; }
+    .main-nav > li > a::after { display: none; }
+    /* Utility icons — far right */
+    .nav-utils {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    .nav-icon:hover { color: var(--gold-light); }
+
+    /* ========== MEGA MENU ========== */
+    .mega-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: var(--white);
+      border-top: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--light-gray);
+      display: none;
+      padding: 36px 40px 40px;
+      z-index: 999;
+    }
+    .main-nav > li:hover .mega-menu { display: flex; }
+    .mega-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      padding-right: 36px;
+      border-right: 1px solid var(--light-gray);
+    }
+    .mega-sidebar a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--charcoal);
+      padding: 10px 0;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .mega-sidebar a:hover { color: var(--gold); }
+    .mega-sidebar a::after {
+      content: '>';
+      font-weight: 400;
+      font-size: 13px;
+    }
+    .mega-sidebar .mega-sidebar-plain::after { content: ''; }
+    .mega-sidebar-bottom {
+      margin-top: auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .mega-sidebar-bottom a {
+      font-weight: 400;
+      color: var(--warm-gray);
+      font-size: 11px;
+    }
+    .mega-sidebar-bottom a::after { content: ''; }
+    /* Mega grid — product images */
+    .mega-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      padding-left: 36px;
+    }
+    .mega-item { text-align: center; cursor: pointer; }
+    .mega-item:hover .mega-item-img { opacity: 0.85; }
+    .mega-item-img {
+      aspect-ratio: 1;
+      background: #f2f0ec;
+      margin-bottom: 10px;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.3s;
+    }
+    .mega-item-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--charcoal);
+      font-weight: 400;
+    }
+
+    /* ========== HERO SLIDER ========== */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 580px;
+      overflow: hidden;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: scale(1.03);
+    }
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 1;
+    }
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.05) 50%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding-bottom: 72px;
+    }
+    .hero h1 {
+      font-size: 54px;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.2);
+    }
+    /* Slider arrows */
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .hero-arrow:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .hero-arrow svg { width: 20px; height: 20px; }
+    .hero-arrow-prev { left: 32px; }
+    .hero-arrow-next { right: 32px; }
+    /* Slider dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 10px;
+    }
+    .hero-dot {
+      width: 28px;
+      height: 2px;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: background 0.3s, width 0.3s;
+    }
+    .hero-dot.active {
+      width: 40px;
+      background: #fff;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 18px 54px;
+      border: 1px solid rgba(255,255,255,0.7);
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.45s;
+    }
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: -1;
+    }
+    .hero-cta:hover { color: var(--charcoal); border-color: #fff; }
+    .hero-cta:hover::before { transform: scaleX(1); transform-origin: left; }
+    .btn-primary {
+      display: inline-block;
+      padding: 18px 52px;
+      background: #2C3350;
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: 1px solid #2C3350;
+      transition: background 0.4s, color 0.4s, border-color 0.4s;
+    }
+    .btn-primary:hover { background: #fff; color: #1a1a1a; border-color: #1a1a1a; }
+
+    /* ========== TRUST BAR ========== */
+    .trust-bar {
+      background: #2c3350;
+      border-bottom: none;
+      padding: 14px 0;
+    }
+    .trust-bar-inner {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #ffffff;
+    }
+    .trust-icon {
+      width: 24px;
+      height: 24px;
+      color: #ffffff;
+    }
+
+    /* ========== SHOP BY PEARL TYPE ========== */
+    .pearl-types {
+      background: var(--cream);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #2c3350;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .section-header h2 {
+      font-size: 42px;
+      color: #2c3350;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .section-header p {
+      color: #2c3350;
+      font-size: 14px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .pearl-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .pearl-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      group: true;
+    }
+    .pearl-card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s ease;
+    }
+    .pearl-card:hover .pearl-card-bg { transform: scale(1.05); }
+    /* Individual pearl type colors */
+    .pearl-card--akoya .pearl-card-bg {
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656') center/cover no-repeat;
+    }
+    .pearl-card--tahitian .pearl-card-bg {
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657') center/cover no-repeat;
+    }
+    .pearl-card--southsea .pearl-card-bg {
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0730_2.jpg?v=1775547658') center/cover no-repeat;
+    }
+    .pearl-card--freshwater .pearl-card-bg {
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_9406.jpg?v=1775547657') center/cover no-repeat;
+    }
+    /* Pearl orb in each card */
+    .pearl-orb {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      transition: transform 0.6s ease;
+    }
+    .pearl-card:hover .pearl-orb { transform: translate(-50%, -58%) scale(1.08); }
+    .pearl-orb--akoya {
+      background: radial-gradient(ellipse at 35% 35%, #fff 0%, #f8f4f0 30%, #ede5db 60%, #ddd2c5 100%);
+      box-shadow: inset -8px -8px 20px rgba(180,160,130,0.3), inset 6px 6px 15px rgba(255,255,255,0.8), 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .pearl-orb--tahitian {
+      background: radial-gradient(ellipse at 35% 35%, #8a8a8a 0%, #5a5a5a 30%, #3a3a3a 60%, #2a2a2a 100%);
+      box-shadow: inset -8px -8px 20px rgba(0,0,0,0.4), inset 6px 6px 15px rgba(120,120,120,0.5), 0 8px 30px rgba(0,0,0,0.2);
+    }
+    .pearl-orb--southsea {
+      background: radial-gradient(ellipse at 35% 35%, #fff 0%, #f5ecd8 30%, #e8dbb8 60%, #d4c498 100%);
+      box-shadow: inset -8px -8px 20px rgba(180,160,100,0.3), inset 6px 6px 15px rgba(255,255,255,0.8), 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .pearl-orb--freshwater {
+      background: radial-gradient(ellipse at 35% 35%, #fff 0%, #f8f0f2 30%, #f0dfe4 60%, #e4cdd5 100%);
+      box-shadow: inset -8px -8px 20px rgba(180,140,160,0.3), inset 6px 6px 15px rgba(255,255,255,0.8), 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .pearl-orb::before {
+      content: '';
+      position: absolute;
+      top: 18%;
+      left: 22%;
+      width: 30%;
+      height: 22%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.8), transparent);
+      filter: blur(4px);
+    }
+    .pearl-orb { display: none; }
+    .pearl-card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px 24px;
+      text-align: center;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+    }
+    .pearl-card-info h3 {
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 4px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+    }
+    .pearl-card-info .price-range {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.05em;
+    }
+    .pearl-card-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #fff;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.4s;
+    }
+    .pearl-card:hover .pearl-card-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== FEATURED COLLECTION ========== */
+    .featured {
+      background: var(--white);
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+    .featured-image {
+      aspect-ratio: 4/5;
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0684.jpg?v=1775547658') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative pearl strand visual — hidden when photo used */
+    .featured-image-inner {
+      display: none;
+    }
+    .pearl-strand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transform: rotate(-15deg);
+    }
+    .strand-pearl {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 35% 35%, #fff 0%, #f5f0eb 30%, #e8ddd4 60%, #d4c8b8 100%);
+      box-shadow: inset -4px -4px 10px rgba(180,160,130,0.3), inset 3px 3px 8px rgba(255,255,255,0.8), 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .strand-pearl:nth-child(odd) { transform: translateX(-3px); }
+    .strand-pearl:nth-child(even) { transform: translateX(3px); }
+    .strand-pearl:nth-child(3n) { width: 38px; height: 38px; }
+    .featured-text {
+      padding: 40px 60px;
+    }
+    .featured-text .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--warm-gray);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .featured-text h2 {
+      font-size: 40px;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .featured-text p {
+      color: var(--warm-gray);
+      font-size: 15px;
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+
+    /* ========== BESTSELLERS (horizontal scroll, Foundrae-style cards) ========== */
+    .bestsellers {
+      background: var(--white);
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .bs-header {
+      margin-bottom: 50px;
+    }
+    .bs-header h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #2c3350;
+      margin-bottom: 30px;
+    }
+    .bs-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      border-bottom: 1px solid var(--light-gray);
+      padding-bottom: 0;
+    }
+    .bs-tab {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #2c3350;
+      padding-bottom: 14px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s, color 0.3s;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    .bs-tab.active,
+    .bs-tab:hover {
+      border-bottom-color: #2c3350;
+    }
+    .bs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .bs-card {
+      cursor: pointer;
+    }
+    .bs-card-img {
+      position: relative;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      margin-bottom: 20px;
+      background: #f0f0f0;
+      border-radius: 4px;
+    }
+    .bs-card-img-inner {
+      position: absolute;
+      inset: 0;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .bs-card-img-inner.bs-img-hover {
+      background-size: cover;
+    }
+    .bs-card-img-inner.bs-img-hover {
+      opacity: 0;
+    }
+    .bs-card:hover .bs-card-img-inner.bs-img-default {
+      opacity: 0;
+    }
+    .bs-card:hover .bs-card-img-inner.bs-img-hover {
+      opacity: 1;
+    }
+    .bs-card:hover .bs-card-img-inner {
+      transform: scale(1.03);
+    }
+    .bs-card-info { text-align: center; }
+    .bs-card-info .bs-category {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #2c3350;
+      margin-bottom: 6px;
+    }
+    .bs-card-info h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .bs-card-info .bs-price {
+      font-size: 14px;
+      color: var(--charcoal);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .bs-card-info .bs-stars {
+      color: #c8a951;
+      font-size: 13px;
+    }
+    .bs-card-info .bs-review-count {
+      font-size: 12px;
+      color: var(--warm-gray);
+      margin-left: 6px;
+    }
+    .bs-cta-btn {
+      display: inline-block;
+      background: #2c3350;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 16px 40px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .bs-cta-btn:hover {
+      background: #1e2440;
+    }
+    .bs-panel {
+      display: none;
+    }
+    .bs-panel.active {
+      display: block;
+    }
+
+    /* ========== QUOTE BLOCK ========== */
+    .quote-block {
+      padding: 90px 0;
+      text-align: center;
+      background: var(--white);
+    }
+    .quote-text {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 34px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--charcoal);
+      max-width: 780px;
+      margin: 0 auto 32px;
+    }
+    .quote-cta {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--charcoal);
+      font-weight: 500;
+      border-bottom: 1px solid var(--charcoal);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .quote-cta:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* ========== CURATED COLLECTIONS ========== */
+    .curated {
+      background: var(--white);
+      padding: 80px 0 60px;
+    }
+    .curated-header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .curated-header h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #2c3350;
+      margin-bottom: 12px;
+    }
+    .curated-header p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #2c3350;
+    }
+    .curated-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    .curated-products {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .curated-product-card {
+      cursor: pointer;
+    }
+    .curated-product-img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      margin-bottom: 12px;
+      background: #f5f5f5;
+    }
+    .curated-product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .curated-product-card:hover .curated-product-img img {
+      transform: scale(1.05);
+    }
+    .curated-product-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .curated-product-meta {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+    .curated-hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 60px;
+      background-size: cover;
+      background-position: center;
+    }
+    .curated-hero-overlay {
+      text-align: center;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    .curated-hero-overlay .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .curated-hero-overlay h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 48px;
+      font-weight: 700;
+      font-style: normal;
+      margin-bottom: 28px;
+      color: #fff;
+      line-height: 1.1;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.2);
+    }
+    .curated-hero-btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #fff;
+      background: transparent;
+      padding: 18px 48px;
+      border: 1px solid rgba(255,255,255,0.7);
+      transition: background 0.4s, color 0.4s, border-color 0.4s;
+      position: relative;
+    }
+    .curated-hero-btn:hover {
+      background: #fff;
+      color: var(--charcoal);
+      border-color: #fff;
+    }
+
+    /* ========== PEARL GUIDE STEPS ========== */
+    .pearl-guide {
+      background: var(--white);
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .pearl-guide-header {
+      position: relative;
+      margin-bottom: 50px;
+    }
+    .pearl-guide-header .pg-script {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 60px;
+      font-weight: 400;
+      font-style: italic;
+      color: #e8e5df;
+      line-height: 1;
+    }
+    .pearl-guide-header h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #2c3350;
+      margin-top: -20px;
+      position: relative;
+    }
+    .pg-main {
+      display: none;
+      grid-template-columns: 1fr 537px 1fr;
+      gap: 24px;
+      margin-bottom: 50px;
+      align-items: stretch;
+      height: 537px;
+      justify-content: center;
+    }
+    .pg-main.active {
+      display: grid;
+    }
+    .pg-product {
+      background: var(--cream);
+      border-radius: 0;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+    }
+    .pg-product-img {
+      width: 80%;
+      max-width: 280px;
+      margin-bottom: 20px;
+    }
+    .pg-product-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .pg-product-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+    .pg-product-cart {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid #ddd;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .pg-product-cart:hover { border-color: #2c3350; background: #2c3350; }
+    .pg-product-cart:hover svg { color: #fff; }
+    .pg-product-cart svg { width: 16px; height: 16px; color: #2c3350; }
+    .pg-product-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 20px;
+      transition: opacity 0.3s;
+    }
+    .pg-product-link:hover { opacity: 0.85; }
+    .pg-hero-wrap {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      width: 100%;
+    }
+    .pg-hero-img {
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .pg-text {
+      background: var(--cream);
+      border-radius: 0;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      overflow: hidden;
+    }
+    .pg-text p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .pg-text p:last-child { margin-bottom: 0; }
+    .pg-steps {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    .pg-step {
+      text-align: center;
+      cursor: pointer;
+    }
+    .pg-step-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #2c3350;
+      padding: 8px 18px;
+      border: 1px solid var(--light-gray);
+      border-radius: 0;
+      margin-bottom: 14px;
+      display: inline-block;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .pg-step.active .pg-step-label {
+      background: #2c3350;
+      color: #fff;
+      border-color: #2c3350;
+    }
+    .pg-step-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 0;
+      object-fit: cover;
+      margin: 0 auto 10px;
+      display: block;
+    }
+    .pg-step.active .pg-step-img {
+      outline: 2px solid #2c3350;
+      outline-offset: 3px;
+    }
+    .pg-step-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.4;
+    }
+
+    /* ========== BRAND STORY / SPLIT ========== */
+    .brand-story-wrap {
+      position: relative;
+    }
+    .brand-story {
+      background: var(--charcoal);
+      color: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .brand-story .featured-grid {
+      min-height: 560px;
+    }
+    .brand-story-image {
+      height: 100%;
+      min-height: 560px;
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about-banner-bg.png?v=1775547658') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-story-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.2);
+    }
+    .brand-story-text {
+      padding: 80px 60px;
+    }
+    .brand-story-text .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .brand-story-text h2 {
+      font-size: 40px;
+      color: var(--cream);
+      margin-bottom: 24px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .brand-story-text p {
+      color: #b0a99e;
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .brand-story-text .btn-outline {
+      display: inline-block;
+      padding: 16px 48px;
+      border: 1px solid rgba(255,255,255,0.5);
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+      margin-left: 0;
+      margin-top: 20px;
+      transition: background 0.4s, color 0.4s, border-color 0.4s;
+    }
+    .brand-story-text .btn-outline:hover {
+      background: #fff;
+      color: #1a1a1a;
+      border-color: #fff;
+    }
+
+    /* ========== PEARL LEXICON (dark tenet section) ========== */
+    .tenet-section {
+      background: #1c1b19 url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/ocean-bg.png?v=1775547658') center/cover no-repeat;
+      background-blend-mode: overlay;
+      color: #fff;
+      padding: 80px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .tenet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1.4fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .tenet-divider { background: rgba(255,255,255,0.15); }
+    .tenet-left .t-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--gold-light);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .tenet-left h2 {
+      font-size: 38px;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .tenet-left .t-def {
+      font-size: 14px;
+      color: #a8a299;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .tenet-left .btn-underline-light {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #fff;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 6px;
+      transition: color 0.3s;
+    }
+    .tenet-left .btn-underline-light::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 1px;
+      background: #fff;
+      transform: scaleX(0.35);
+      transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .tenet-left .btn-underline-light:hover::after { transform: scaleX(1); }
+    .tenet-right h3 {
+      font-size: 30px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .tenet-right .t-subtitle {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+    }
+    .tenet-right .t-body {
+      font-size: 14px;
+      color: #a8a299;
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+    .tenet-types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 30px;
+      margin-bottom: 30px;
+    }
+    .tenet-type-item {
+      font-size: 13px;
+      color: #d4cec6;
+      line-height: 1.5;
+    }
+    .tenet-type-item strong { color: #fff; font-weight: 500; }
+    .tenet-symbols {
+      display: flex;
+      gap: 20px;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+    .tenet-symbol {
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.3s;
+    }
+    .tenet-symbol:hover { opacity: 0.8; }
+    .tenet-symbol-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .tenet-symbol-orb {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 30% 28%, #f2ece4, #c4b8a4, #8a7d68);
+      box-shadow: inset -3px -3px 6px rgba(80,70,50,0.4), inset 2px 2px 4px rgba(255,248,235,0.3);
+    }
+    .tenet-symbol-name {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a8a299;
+    }
+    @media (max-width: 1024px) {
+      .tenet-grid { grid-template-columns: 1fr; }
+      .tenet-divider { display: none; }
+    }
+    @media (max-width: 768px) {
+      .tenet-types { grid-template-columns: 1fr; }
+      .tenet-symbols { flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* ========== PEARL SIZE GUIDE (inspired by Gingiberi) ========== */
+    .size-guide {
+      background: var(--cream-dark);
+      position: relative;
+      z-index: 2;
+    }
+    .size-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+    .size-item {
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .size-item:hover { transform: translateY(-8px); }
+    .size-orb-wrap {
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .size-orb {
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 35% 35%, #fff 0%, #f5f0eb 30%, #e8ddd4 60%, #d4c8b8 100%);
+      box-shadow: inset -5px -5px 12px rgba(180,160,130,0.3), inset 4px 4px 10px rgba(255,255,255,0.8), 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      position: relative;
+    }
+    .size-orb::before {
+      content: '';
+      position: absolute;
+      top: 18%;
+      left: 22%;
+      width: 30%;
+      height: 20%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.85), transparent);
+      filter: blur(3px);
+    }
+    .size-item:hover .size-orb { transform: scale(1.1); }
+    .size-label {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 20px;
+      color: #2c3350;
+      margin-bottom: 4px;
+    }
+    .size-desc {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #2c3350;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials {
+      position: relative;
+      z-index: 2;
+      background: var(--white);
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .testimonial-card {
+      padding: 40px;
+      background: var(--cream);
+      text-align: center;
+    }
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .testimonial-text {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--charcoal);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .testimonial-author {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--warm-gray);
+    }
+    .testimonial-verified {
+      font-size: 11px;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    /* ========== EDUCATION / PEARL GUIDE ========== */
+    .education {
+      background: var(--cream);
+      position: relative;
+      z-index: 2;
+    }
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .edu-card {
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .edu-card:hover { transform: translateY(-4px); }
+    .edu-card-image {
+      aspect-ratio: 16/10;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .edu-card-image--luster {
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/0508ins_800x_aec719ef-ec66-4e4c-8682-f4b81b2bc9fa.png?v=1775547659') center/cover no-repeat;
+    }
+    .edu-card-image--types {
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656') center/cover no-repeat;
+    }
+    .edu-card-image--care {
+      background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661') center/cover no-repeat;
+    }
+    .edu-card h4 {
+      font-size: 20px;
+      color: #2c3350;
+      margin-bottom: 8px;
+    }
+    .edu-card p {
+      font-size: 14px;
+      color: #2c3350;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .edu-link {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #2c3350;
+      font-weight: 500;
+    }
+
+    /* ========== INSTAGRAM / SOCIAL ========== */
+    .social {
+      position: relative;
+      z-index: 2;
+      background: var(--white);
+      overflow: hidden;
+      padding-bottom: 0 !important;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+    .social-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .social-item-bg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.4s;
+    }
+    .social-item:hover .social-item-bg { transform: scale(1.05); }
+    .social-item::after {
+      content: '@echovelle';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(44,44,44,0.4);
+      color: white;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .social-item:hover::after { opacity: 1; }
+    .social-item:nth-child(1) .social-item-bg { background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0727.jpg?v=1775547658') center/cover no-repeat; }
+    .social-item:nth-child(2) .social-item-bg { background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658') center/cover no-repeat; }
+    .social-item:nth-child(3) .social-item-bg { background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657') center/cover no-repeat; }
+    .social-item:nth-child(4) .social-item-bg { background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658') center/cover no-repeat; }
+    .social-item:nth-child(5) .social-item-bg { background: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/08a4bf12-7975-4101-ac4a-8d1aa3ea688f.png?v=1775547658') center/cover no-repeat; }
+
+    /* ========== NEWSLETTER ========== */
+    /* ========== MEDIA MARQUEE ========== */
+    .media-marquee {
+      background: #fff;
+      padding: 30px 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+    .media-marquee-track {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .media-marquee-track img {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0);
+      opacity: 0.65;
+      flex-shrink: 0;
+      margin: 0 50px;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .newsletter {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--light-gray);
+      padding: 70px 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .newsletter h2 {
+      font-size: 42px;
+      color: #2c3350;
+      margin-bottom: 10px;
+    }
+    .newsletter p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: #2c3350;
+      max-width: 520px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .nl-form {
+      display: flex;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .nl-form input {
+      flex: 1;
+      padding: 14px 18px;
+      border: 1px solid var(--light-gray);
+      background: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .nl-form input::placeholder { color: #bbb; }
+    .nl-form input:focus { border-color: var(--gold); }
+    .nl-form button {
+      padding: 14px 32px;
+      background: #2C3350;
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 500;
+      transition: background 0.4s;
+    }
+    .nl-form button:hover { background: #1a1a1a; }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: #2c3350;
+      border-top: none;
+      padding: 60px 0 36px;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-brand-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-top: 18px;
+      max-width: 280px;
+    }
+    .footer-logo { width: 250px; height: 40px; object-fit: contain; filter: brightness(0) invert(1); }
+    .footer h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #fff;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 8px; }
+    .footer ul a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.3s;
+    }
+    .footer ul a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { color: rgba(255,255,255,0.65); transition: color 0.3s; font-size: 12px; }
+    .footer-social a:hover { color: var(--gold-light); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 44px; }
+      .pearl-grid { grid-template-columns: repeat(2, 1fr); }
+      .bs-grid { grid-template-columns: repeat(2, 1fr); }
+      .featured-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .header-inner { padding: 0 24px; }
+      .main-nav { gap: 18px; }
+      .main-nav > li > a { font-size: 10px; }
+    }
+    @media (max-width: 768px) {
+      .container, .container-wide { padding: 0 24px; }
+      .main-nav { display: none; }
+      .header-inner { padding: 0 20px; }
+      .hero { height: 70vh; min-height: 500px; }
+      .hero h1 { font-size: 36px; }
+      .hero-arrow { width: 40px; height: 40px; }
+      .hero-arrow-prev { left: 12px; }
+      .hero-arrow-next { right: 12px; }
+      .section-pad { padding: 60px 0; }
+      .section-header h2 { font-size: 36px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .social-grid { grid-template-columns: repeat(3, 1fr); }
+      .edu-grid { grid-template-columns: 1fr; }
+      .trust-bar-inner { gap: 30px; }
+      .size-grid { gap: 20px; }
+      .brand-story-text { padding: 40px 24px; }
+      .featured-text { padding: 40px 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 16px; }
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== ANNOUNCEMENT BAR ===== -->
+  <div class="announcement">
+    Complimentary Shipping on All Orders Over $150 &mdash; <a href="#">100-Day Returns</a>
+  </div>
+
+  <!-- ===== HEADER (Foundrae-style) ===== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo-link">
+        <img src="logo-echovelle.png" alt="ECHOVELLE" class="logo-img">
+      </a>
+      <ul class="main-nav">
+        <!-- NECKLACES with mega menu -->
+        <li>
+          <a href="#">Necklaces</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Shop Necklaces</a>
+                <a href="#" class="mega-sidebar-plain">View All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0727.jpg?v=1775547658')"></div><p class="mega-item-label">Everyday Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658')"></div><p class="mega-item-label">Gift Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658')"></div><p class="mega-item-label">Statement Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656')"></div><p class="mega-item-label">Elevated Necklaces</p></div>
+            </div>
+          </div>
+        </li>
+        <!-- EARRINGS with mega menu -->
+        <li>
+          <a href="#">Earrings</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Shop Earrings</a>
+                <a href="#" class="mega-sidebar-plain">View All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/08a4bf12-7975-4101-ac4a-8d1aa3ea688f.png?v=1775547658')"></div><p class="mega-item-label">Stud Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657')"></div><p class="mega-item-label">Drop Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0730_2.jpg?v=1775547658')"></div><p class="mega-item-label">Gift Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657')"></div><p class="mega-item-label">Statement Earrings</p></div>
+            </div>
+          </div>
+        </li>
+        <!-- GIFTS with mega menu -->
+        <li>
+          <a href="#">Gifts</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Shop Gifts</a>
+                <a href="#" class="mega-sidebar-plain">Gift Cards</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about_600x_3dbaadcc-51b8-440c-b2ed-29ef6c33f41e.png?v=1775547658')"></div><p class="mega-item-label">Gifts for Her</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/0508ins_800x_aec719ef-ec66-4e4c-8682-f4b81b2bc9fa.png?v=1775547659')"></div><p class="mega-item-label">Birthday Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Anniversary Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657')"></div><p class="mega-item-label">Mother&rsquo;s Day Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661')"></div><p class="mega-item-label">Gift Sets</p></div>
+            </div>
+          </div>
+        </li>
+        <!-- COLLECTIONS with mega menu -->
+        <li>
+          <a href="#">Collections</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Editorial Edits</a>
+                <a href="#" class="mega-sidebar-plain">Shop All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658')"></div><p class="mega-item-label">Design Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Gift Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656')"></div><p class="mega-item-label">Elevated Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0684.jpg?v=1775547658')"></div><p class="mega-item-label">New Arrivals</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658')"></div><p class="mega-item-label">Best Sellers</p></div>
+            </div>
+          </div>
+        </li>
+        <!-- ABOUT with mega menu -->
+        <li>
+          <a href="#">About</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">The House of Echovelle</a>
+                <a href="#" class="mega-sidebar-plain">Customer Care</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about_600x_3dbaadcc-51b8-440c-b2ed-29ef6c33f41e.png?v=1775547658')"></div><p class="mega-item-label">Our Story</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657')"></div><p class="mega-item-label">Pearl Care</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/bg-image-rings.png?v=1775547658')"></div><p class="mega-item-label">Warranty</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661')"></div><p class="mega-item-label">FAQ</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Contact Us</p></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-utils">
+        <a href="#" class="nav-icon" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></a>
+        <a href="#" class="nav-icon" aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></a>
+        <a href="#" class="nav-icon" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></a>
+        <a href="#" class="nav-icon" aria-label="Bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO SLIDER ===== -->
+  <section class="hero" id="heroSlider">
+    <div class="hero-slide active" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/banner_1.webp?v=1775816219')">
+      <div class="hero-content">
+        <h1>Elegance Born<br>from the Sea</h1>
+        <a href="#" class="hero-cta sans">Shop Necklaces &amp; Pearls</a>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/banner_2.webp?v=1775816221')">
+      <div class="hero-content">
+        <h1>Timeless Pearls,<br>Modern Craft</h1>
+        <a href="#" class="hero-cta sans">Explore the Collection</a>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/banner_3.webp?v=1775816221')">
+      <div class="hero-content">
+        <h1>Where Ocean<br>Meets Artistry</h1>
+        <a href="#" class="hero-cta sans">Discover Our Story</a>
+      </div>
+    </div>
+    <!-- Arrows -->
+    <button class="hero-arrow hero-arrow-prev" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button class="hero-arrow hero-arrow-next" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <!-- Dots -->
+    <div class="hero-dots"></div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner container-wide">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M20 12V8H6a2 2 0 0 1 0-4h14v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><circle cx="18" cy="16" r="1"/>
+        </svg>
+        <span>Free Shipping Over $150</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+        </svg>
+        <span>Certified Authentic</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m7.5 4.27 9 5.15"/><path d="M3.29 7 12 12l8.71-5"/><path d="M12 22V12"/>
+        </svg>
+        <span>100-Day Returns</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/>
+        </svg>
+        <span>Ethically Sourced</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SHOP BY PEARL TYPE ===== -->
+  <!-- ===== BESTSELLERS ===== -->
+  <section class="bestsellers">
+    <div class="container">
+      <div class="bs-header fade-in">
+        <h2>Gifts she'll treasure forever.</h2>
+        <div class="bs-tabs">
+          <button class="bs-tab active" data-tab="earrings">Earrings</button>
+          <button class="bs-tab" data-tab="rings">Rings</button>
+          <button class="bs-tab" data-tab="bracelets">Bracelets</button>
+          <button class="bs-tab" data-tab="necklaces">Necklaces</button>
+        </div>
+      </div>
+
+      <!-- Earrings -->
+      <div class="bs-panel active" data-panel="earrings">
+        <div class="bs-grid">
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/raya-earrings.webp?v=1775703342')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/2-_1.webp?v=1775703343')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Meteorites</p>
+              <h4>Double M&eacute;t&eacute;orites Stud Earrings</h4>
+              <p class="bs-price">&euro;114,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">3 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/sear-glory-ygf.webp?v=1775703343')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/skandiashafer_2025-10-22-pearlsource_284-2.webp?v=1775703343')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Eclat</p>
+              <h4>Single Eclat Ear Cuff</h4>
+              <p class="bs-price">&euro;117,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">2 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/kaia-earrings-yg.webp?v=1775703343')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/lariat-1.webp?v=1775703390')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Croisette</p>
+              <h4>Couture Mono Ear Slider</h4>
+              <p class="bs-price">&euro;169,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">3 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_AN0995-STA-YG.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/910-tssp-mcdbr.webp?v=1775703344')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Wonderland</p>
+              <h4>Serpentine Hoop Earrings</h4>
+              <p class="bs-price">&euro;150,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">3 reviews</span></p>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="bs-cta-btn sans">All Earrings</a>
+      </div>
+
+      <!-- Rings -->
+      <div class="bs-panel" data-panel="rings">
+        <div class="bs-grid">
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_MG0023Amethyst-CL30_29467dbe-9d53-4eb2-ab69-ffc8a44ed234.png?v=1775701972')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/keshi-pearl-necklace.webp?v=1775703344')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Solaire</p>
+              <h4>Pearl Solitaire Ring</h4>
+              <p class="bs-price">&euro;189,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="bs-review-count">5 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_MG0024-INI-YG-A-CL30_png.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/910-tssp-mcdbr.webp?v=1775703344')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Croisette</p>
+              <h4>Twisted Pearl Band</h4>
+              <p class="bs-price">&euro;210,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">4 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_MG00056-TRU-YG-DI-1L-CL30_26ccdcb8-0264-4bf6-9ea3-0fa80f226ff4.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/2-_1.webp?v=1775703343')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Eclat</p>
+              <h4>Eclat Open Ring</h4>
+              <p class="bs-price">&euro;145,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="bs-review-count">6 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_AN1490-TRU-YG-DI.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/lariat-1.webp?v=1775703390')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Wonderland</p>
+              <h4>Double Pearl Cocktail Ring</h4>
+              <p class="bs-price">&euro;230,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">2 reviews</span></p>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="bs-cta-btn sans">All Rings</a>
+      </div>
+
+      <!-- Bracelets -->
+      <div class="bs-panel" data-panel="bracelets">
+        <div class="bs-grid">
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_AN0090-INI-YG-A-16_png.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/double-pink-pearl-necklace.webp?v=1775703344')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Solaire</p>
+              <h4>Pearl Chain Bracelet</h4>
+              <p class="bs-price">&euro;198,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="bs-review-count">7 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_AN0968-CLV-YG-DI-18-1.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/skandiashafer_2025-10-22-pearlsource_284-2.webp?v=1775703343')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Croisette</p>
+              <h4>Multi-Strand Pearl Cuff</h4>
+              <p class="bs-price">&euro;265,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">3 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_MG00056-TRU-YG-DI-1L-CL30_26ccdcb8-0264-4bf6-9ea3-0fa80f226ff4.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/keshi-pearl-necklace.webp?v=1775703344')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Meteorites</p>
+              <h4>Delicate Pearl Bangle</h4>
+              <p class="bs-price">&euro;175,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="bs-review-count">4 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_AN0995-STA-YG.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/910-tssp-mcdbr.webp?v=1775703344')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Eclat</p>
+              <h4>Eclat Tennis Bracelet</h4>
+              <p class="bs-price">&euro;320,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">2 reviews</span></p>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="bs-cta-btn sans">All Bracelets</a>
+      </div>
+
+      <!-- Necklaces -->
+      <div class="bs-panel" data-panel="necklaces">
+        <div class="bs-grid">
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/fashneck-jasmine-w.webp?v=1775703343')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/lariat-1.webp?v=1775703390')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Solaire</p>
+              <h4>Balance Pearl Pendant</h4>
+              <p class="bs-price">&euro;225,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="bs-review-count">8 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/fashneck-amara-wgf.webp?v=1775703343')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/double-pink-pearl-necklace.webp?v=1775703344')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Eclat</p>
+              <h4>Edison Pearl Choker</h4>
+              <p class="bs-price">&euro;295,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">5 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_AN0968-CLV-YG-DI-18-1.png?v=1775701973')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/keshi-pearl-necklace.webp?v=1775703344')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Croisette</p>
+              <h4>Tahitian Strand Necklace</h4>
+              <p class="bs-price">&euro;480,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="bs-review-count">6 reviews</span></p>
+            </div>
+          </div>
+          <div class="bs-card fade-in">
+            <div class="bs-card-img">
+              <div class="bs-card-img-inner bs-img-default" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_MG0023Amethyst-CL30_29467dbe-9d53-4eb2-ab69-ffc8a44ed234.png?v=1775701972')"></div>
+              <div class="bs-card-img-inner bs-img-hover" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/skandiashafer_2025-10-22-pearlsource_284-2.webp?v=1775703343')"></div>
+            </div>
+            <div class="bs-card-info">
+              <p class="bs-category">Wonderland</p>
+              <h4>Layered Pearl Lariat</h4>
+              <p class="bs-price">&euro;350,00</p>
+              <p><span class="bs-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="bs-review-count">3 reviews</span></p>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="bs-cta-btn sans">All Necklaces</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CURATED COLLECTIONS ===== -->
+  <section class="curated">
+    <div class="container">
+      <div class="curated-header fade-in">
+        <h2>Curated Collections</h2>
+        <p>Handcrafted by our expert designers.</p>
+      </div>
+      <div class="curated-layout">
+        <div class="curated-products">
+          <div class="curated-product-card fade-in">
+            <div class="curated-product-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/skandiashafer_2025-10-22-pearlsource_284-2.webp?v=1775703343" alt="Pearl Drop Earrings">
+            </div>
+            <p class="curated-product-name">Pearl Drop Earrings</p>
+            <p class="curated-product-meta">Akoya | $298.00</p>
+          </div>
+          <div class="curated-product-card fade-in">
+            <div class="curated-product-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/2-_1.webp?v=1775703343" alt="Lumiere Pendant">
+            </div>
+            <p class="curated-product-name">Lumiere Pendant</p>
+            <p class="curated-product-meta">South Sea | $268.00</p>
+          </div>
+          <div class="curated-product-card fade-in">
+            <div class="curated-product-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/lariat-1.webp?v=1775703390" alt="Signature Lariat">
+            </div>
+            <p class="curated-product-name">Signature Lariat</p>
+            <p class="curated-product-meta">Freshwater | $268.00</p>
+          </div>
+          <div class="curated-product-card fade-in">
+            <div class="curated-product-img">
+              <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/double-pink-pearl-necklace.webp?v=1775703344" alt="Pearl Strand Necklace">
+            </div>
+            <p class="curated-product-name">Pearl Strand Necklace</p>
+            <p class="curated-product-meta">Edison | $328.00</p>
+          </div>
+        </div>
+        <div class="curated-hero fade-in" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/910-tssp-mcdbr.webp?v=1775703344')">
+          <div class="curated-hero-overlay">
+            <p class="eyebrow">Mother's Day Collection</p>
+            <h3>A gift to remember</h3>
+            <a href="#" class="curated-hero-btn">View the Lookbook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEARL GUIDE STEPS ===== -->
+  <section class="pearl-guide">
+    <div class="container">
+      <div class="pearl-guide-header fade-in">
+        <span class="pg-script">Easy Steps To Style</span>
+        <h2>Your Pearls, Reveal Your Glow</h2>
+      </div>
+      <!-- Akoya -->
+      <div class="pg-main fade-in active" data-pg="1">
+        <div class="pg-product">
+          <a href="#" class="pg-product-cart" title="Add to Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <a href="#" class="pg-product-link">
+            <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/fashneck-jasmine-w.webp?v=1775703343" alt="Akoya Pearl Necklace" class="pg-product-img">
+          </a>
+          <p class="pg-product-name">Akoya Pearl Strand Necklace</p>
+          <p class="pg-product-price">$385.00</p>
+        </div>
+        <div class="pg-hero-wrap"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/lariat-1.webp?v=1775703390" alt="Akoya Pearl" class="pg-hero-img"></div>
+        <div class="pg-text">
+          <p>Originating from the cool waters of Japan and China, Akoya pearls are the quintessential classic. Renowned for their perfectly round shape and mirror-like luster, they range from 6–9mm with a luminous white body and delicate ros&eacute; or silver overtones.</p>
+          <p>Akoya pearls set the standard for fine pearl jewelry. Their exceptional nacre quality creates a deep, reflective glow that has captivated collectors for centuries — the ultimate symbol of timeless elegance.</p>
+        </div>
+      </div>
+      <!-- Tahitian -->
+      <div class="pg-main" data-pg="2">
+        <div class="pg-product">
+          <a href="#" class="pg-product-cart" title="Add to Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <a href="#" class="pg-product-link">
+            <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/fashneck-amara-wgf.webp?v=1775703343" alt="Tahitian Pearl Pendant" class="pg-product-img">
+          </a>
+          <p class="pg-product-name">Tahitian Noir Drop Pendant</p>
+          <p class="pg-product-price">$680.00</p>
+        </div>
+        <div class="pg-hero-wrap"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/double-pink-pearl-necklace.webp?v=1775703344" alt="Tahitian Pearl" class="pg-hero-img"></div>
+        <div class="pg-text">
+          <p>Cultivated in the warm lagoons of French Polynesia, Tahitian pearls are nature's most dramatic gem. Ranging from 8–16mm, their dark body colors span charcoal, forest green, aubergine, and the coveted peacock — a mesmerizing play of green and purple overtones.</p>
+          <p>No two Tahitian pearls are alike. Their bold, mysterious beauty makes them a statement of individuality. The thick nacre layers create an extraordinary depth of color that shifts and shimmers with every movement.</p>
+        </div>
+      </div>
+      <!-- South Sea -->
+      <div class="pg-main" data-pg="3">
+        <div class="pg-product">
+          <a href="#" class="pg-product-cart" title="Add to Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <a href="#" class="pg-product-link">
+            <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/FoundRae_AN0968-CLV-YG-DI-18-1.png?v=1775701973" alt="South Sea Pearl Earrings" class="pg-product-img">
+          </a>
+          <p class="pg-product-name">Golden South Sea Studs</p>
+          <p class="pg-product-price">$920.00</p>
+        </div>
+        <div class="pg-hero-wrap"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/keshi-pearl-necklace.webp?v=1775703344" alt="South Sea Pearl" class="pg-hero-img"></div>
+        <div class="pg-text">
+          <p>Harvested from the pristine waters of Australia, Indonesia, and the Philippines, South Sea pearls are the largest and rarest of all cultured pearls. Measuring 9–20mm, they come in luminous white and luxurious golden hues with a soft, satiny luster.</p>
+          <p>Each South Sea pearl takes 2–4 years to form, resulting in exceptionally thick nacre and an incomparable warmth. Golden South Sea pearls are among the most coveted gems on earth — a true treasure of the deep.</p>
+        </div>
+      </div>
+      <!-- Freshwater -->
+      <div class="pg-main" data-pg="4">
+        <div class="pg-product">
+          <a href="#" class="pg-product-cart" title="Add to Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <a href="#" class="pg-product-link">
+            <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/raya-earrings.webp?v=1775703342" alt="Freshwater Pearl Bracelet" class="pg-product-img">
+          </a>
+          <p class="pg-product-name">Freshwater Pearl Bracelet</p>
+          <p class="pg-product-price">$165.00</p>
+        </div>
+        <div class="pg-hero-wrap"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/910-tssp-mcdbr.webp?v=1775703344" alt="Freshwater Pearl" class="pg-hero-img"></div>
+        <div class="pg-text">
+          <p>Born in the rivers and lakes of China, Freshwater pearls offer remarkable versatility. Available in sizes from 4–15mm, they come in a stunning palette of white, pink, peach, and lavender, with shapes ranging from perfectly round to organic baroque.</p>
+          <p>Freshwater pearls are composed of solid nacre, giving them exceptional durability and a beautiful luminous glow. Their accessible price point and diverse styles make them the perfect entry into the world of fine pearl jewelry.</p>
+        </div>
+      </div>
+      <!-- Luster -->
+      <div class="pg-main" data-pg="5">
+        <div class="pg-product">
+          <a href="#" class="pg-product-cart" title="Add to Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <a href="#" class="pg-product-link">
+            <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/sear-glory-ygf.webp?v=1775703343" alt="High Luster Pearl Ring" class="pg-product-img">
+          </a>
+          <p class="pg-product-name">Lumière High-Luster Ring</p>
+          <p class="pg-product-price">$445.00</p>
+        </div>
+        <div class="pg-hero-wrap"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/2-_1.webp?v=1775703343" alt="Pearl Luster" class="pg-hero-img"></div>
+        <div class="pg-text">
+          <p>Luster is the soul of a pearl — it's what separates an ordinary gem from an extraordinary one. Defined by how light interacts with the nacre layers, high luster creates a sharp, almost mirror-like reflection on the pearl's surface.</p>
+          <p>At Echovelle, we select only pearls with "very high" to "excellent" luster grades. This means you can see a clear reflection in the surface — a luminous glow that seems to radiate from within, giving each pearl its captivating inner light.</p>
+        </div>
+      </div>
+      <!-- Nacre -->
+      <div class="pg-main" data-pg="6">
+        <div class="pg-product">
+          <a href="#" class="pg-product-cart" title="Add to Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <a href="#" class="pg-product-link">
+            <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/kaia-earrings-yg.webp?v=1775703343" alt="Nacre Pearl Earrings" class="pg-product-img">
+          </a>
+          <p class="pg-product-name">Nacre Drop Earrings</p>
+          <p class="pg-product-price">$320.00</p>
+        </div>
+        <div class="pg-hero-wrap"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/skandiashafer_2025-10-22-pearlsource_284-2.webp?v=1775703343" alt="Pearl Nacre" class="pg-hero-img"></div>
+        <div class="pg-text">
+          <p>Nacre — also known as mother-of-pearl — is the organic substance that gives a pearl its beauty. Layer upon microscopic layer of aragonite crystals are deposited by the oyster, creating the iridescent coating that makes each pearl glow.</p>
+          <p>Thicker nacre means deeper luster, richer overtones, and greater durability. Our pearls are selected for nacre thickness of 0.4mm or above, ensuring each piece will maintain its radiant beauty for generations to come.</p>
+        </div>
+      </div>
+
+      <div class="pg-steps fade-in">
+        <div class="pg-step active" data-step="1">
+          <span class="pg-step-label">Akoya</span>
+          <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/lariat-1.webp?v=1775703390" alt="Akoya" class="pg-step-img">
+          <p class="pg-step-name">Classic<br>White Pearl</p>
+        </div>
+        <div class="pg-step" data-step="2">
+          <span class="pg-step-label">Tahitian</span>
+          <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/double-pink-pearl-necklace.webp?v=1775703344" alt="Tahitian" class="pg-step-img">
+          <p class="pg-step-name">Dark &amp;<br>Mysterious</p>
+        </div>
+        <div class="pg-step" data-step="3">
+          <span class="pg-step-label">South Sea</span>
+          <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/keshi-pearl-necklace.webp?v=1775703344" alt="South Sea" class="pg-step-img">
+          <p class="pg-step-name">Largest &amp;<br>Rarest</p>
+        </div>
+        <div class="pg-step" data-step="4">
+          <span class="pg-step-label">Freshwater</span>
+          <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/910-tssp-mcdbr.webp?v=1775703344" alt="Freshwater" class="pg-step-img">
+          <p class="pg-step-name">Versatile &amp;<br>Luminous</p>
+        </div>
+        <div class="pg-step" data-step="5">
+          <span class="pg-step-label">Luster</span>
+          <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/2-_1.webp?v=1775703343" alt="Luster" class="pg-step-img">
+          <p class="pg-step-name">Quality<br>Factor</p>
+        </div>
+        <div class="pg-step" data-step="6">
+          <span class="pg-step-label">Nacre</span>
+          <img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/skandiashafer_2025-10-22-pearlsource_284-2.webp?v=1775703343" alt="Nacre" class="pg-step-img">
+          <p class="pg-step-name">Organic<br>Layers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BRAND STORY ===== -->
+  <div class="brand-story-wrap">
+  <section class="brand-story">
+    <div class="featured-grid">
+      <div class="brand-story-image"></div>
+      <div class="brand-story-text fade-in">
+        <p class="eyebrow sans">Our Philosophy</p>
+        <h2>True Beauty,<br>Never Forced</h2>
+        <p>At Echovelle, we believe the most beautiful things in the world are never rushed. Each pearl in our collection has been nurtured by nature, hand-selected by our experts, and crafted into jewelry that celebrates the art of patience.</p>
+        <p>We work directly with sustainable pearl farms across the Pacific, ensuring every piece meets our uncompromising standards for quality, ethics, and beauty.</p>
+        <a href="#" class="btn-outline sans">Learn More About Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEARL LEXICON (dark tenet section) ===== -->
+  <section class="tenet-section">
+    <div class="container">
+      <div class="tenet-grid fade-in">
+        <div class="tenet-left">
+          <p class="t-eyebrow sans">Our Philosophy</p>
+          <h2>True Beauty,<br>Never Forced</h2>
+          <p class="t-def">At Echovelle, every piece begins with a principle: that the most extraordinary beauty is never rushed. Our pearls are nurtured by nature, hand-selected by our gemologists, and crafted into jewelry that celebrates patience, authenticity, and the quiet power of the natural world.</p>
+          <a href="#" class="btn-underline-light sans">Explore Our Values</a>
+        </div>
+        <div class="tenet-divider"></div>
+        <div class="tenet-right">
+          <h3>The Pearl Lexicon</h3>
+          <p class="t-subtitle">"Each pearl carries a story of the sea."</p>
+          <p class="t-body">We believe in understanding what makes each pearl unique. Our lexicon helps you discover the qualities that matter — from luster to nacre thickness, from body color to overtone. Knowledge transforms a purchase into a meaningful connection.</p>
+          <div class="tenet-types">
+            <div class="tenet-type-item"><strong>Akoya:</strong> The classic white pearl, prized for its mirror-like luster</div>
+            <div class="tenet-type-item"><strong>Tahitian:</strong> Dark, mysterious, with peacock overtones</div>
+            <div class="tenet-type-item"><strong>South Sea:</strong> The largest and rarest, golden or white</div>
+            <div class="tenet-type-item"><strong>Freshwater:</strong> Versatile and luminous, in a range of shapes</div>
+            <div class="tenet-type-item"><strong>Luster:</strong> The most important quality factor</div>
+            <div class="tenet-type-item"><strong>Nacre:</strong> The organic layers that give a pearl its glow</div>
+          </div>
+          <div class="tenet-symbols">
+            <a href="#" class="tenet-symbol">
+              <div class="tenet-symbol-icon"><div class="tenet-symbol-orb"></div></div>
+              <p class="tenet-symbol-name sans">Akoya</p>
+            </a>
+            <a href="#" class="tenet-symbol">
+              <div class="tenet-symbol-icon"><div class="tenet-symbol-orb" style="background:radial-gradient(ellipse at 30% 28%,#6a6a6a,#3a3a3a,#1a1a1a)"></div></div>
+              <p class="tenet-symbol-name sans">Tahitian</p>
+            </a>
+            <a href="#" class="tenet-symbol">
+              <div class="tenet-symbol-icon"><div class="tenet-symbol-orb" style="background:radial-gradient(ellipse at 30% 28%,#f5ecd0,#ddc98a,#c5a860)"></div></div>
+              <p class="tenet-symbol-name sans">South Sea</p>
+            </a>
+            <a href="#" class="tenet-symbol">
+              <div class="tenet-symbol-icon"><div class="tenet-symbol-orb" style="background:radial-gradient(ellipse at 30% 28%,#fff,#f0dde4,#e0c8d2)"></div></div>
+              <p class="tenet-symbol-name sans">Freshwater</p>
+            </a>
+            <a href="#" class="tenet-symbol">
+              <div class="tenet-symbol-icon"><div class="tenet-symbol-orb" style="background:radial-gradient(ellipse at 30% 28%,#fffdf5,#f8f4e8,#ede6d3)"></div></div>
+              <p class="tenet-symbol-name sans">Luster</p>
+            </a>
+            <a href="#" class="tenet-symbol">
+              <div class="tenet-symbol-icon"><div class="tenet-symbol-orb" style="background:radial-gradient(ellipse at 30% 28%,#e8ddd0,#c4b5a0,#a89880)"></div></div>
+              <p class="tenet-symbol-name sans">Nacre</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEARL SIZE GUIDE ===== -->
+  <section class="size-guide section-pad">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="eyebrow sans">Find Your Fit</p>
+        <h2>Shop by Pearl Size</h2>
+        <p>From delicate to statement — choose the size that matches your style.</p>
+      </div>
+      <div class="size-grid fade-in">
+        <div class="size-item">
+          <div class="size-orb-wrap">
+            <div class="size-orb" style="width:36px;height:36px;"></div>
+          </div>
+          <p class="size-label">5–6 mm</p>
+          <p class="size-desc sans">Delicate</p>
+        </div>
+        <div class="size-item">
+          <div class="size-orb-wrap">
+            <div class="size-orb" style="width:52px;height:52px;"></div>
+          </div>
+          <p class="size-label">7–8 mm</p>
+          <p class="size-desc sans">Classic</p>
+        </div>
+        <div class="size-item">
+          <div class="size-orb-wrap">
+            <div class="size-orb" style="width:68px;height:68px;"></div>
+          </div>
+          <p class="size-label">9–10 mm</p>
+          <p class="size-desc sans">Elegant</p>
+        </div>
+        <div class="size-item">
+          <div class="size-orb-wrap">
+            <div class="size-orb" style="width:88px;height:88px;"></div>
+          </div>
+          <p class="size-label">11–12 mm</p>
+          <p class="size-desc sans">Luxurious</p>
+        </div>
+        <div class="size-item">
+          <div class="size-orb-wrap">
+            <div class="size-orb" style="width:110px;height:110px;"></div>
+          </div>
+          <p class="size-label">13–15 mm</p>
+          <p class="size-desc sans">Statement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEARL EDUCATION ===== -->
+  <section class="education section-pad">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="eyebrow sans">Learn</p>
+        <h2>The Pearl Guide</h2>
+        <p>Everything you need to know about choosing the perfect pearl.</p>
+      </div>
+      <div class="edu-grid fade-in">
+        <div class="edu-card">
+          <div class="edu-card-image edu-card-image--luster"></div>
+          <h4>Understanding Pearl Luster</h4>
+          <p>Learn why luster is the most important factor in pearl quality and how to identify exceptional shine.</p>
+          <span class="edu-link sans">Read More &rarr;</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-card-image edu-card-image--types"></div>
+          <h4>Akoya vs. Tahitian vs. South Sea</h4>
+          <p>A complete guide to the world's most prized pearl types, their origins, and what makes each unique.</p>
+          <span class="edu-link sans">Read More &rarr;</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-card-image edu-card-image--care"></div>
+          <h4>How to Care for Your Pearls</h4>
+          <p>Simple tips to keep your pearls radiant for generations. From storage to cleaning, we cover it all.</p>
+          <span class="edu-link sans">Read More &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSTAGRAM / SOCIAL ===== -->
+  <section class="social section-pad-sm">
+    <div class="container text-center" style="margin-bottom:40px;">
+      <div class="section-header fade-in">
+        <p class="eyebrow sans">Follow Us</p>
+        <h2>@echovelle</h2>
+      </div>
+    </div>
+    <div class="social-grid">
+      <div class="social-item"><div class="social-item-bg"></div></div>
+      <div class="social-item"><div class="social-item-bg"></div></div>
+      <div class="social-item"><div class="social-item-bg"></div></div>
+      <div class="social-item"><div class="social-item-bg"></div></div>
+      <div class="social-item"><div class="social-item-bg"></div></div>
+    </div>
+  </section>
+
+  <!-- ===== MEDIA MARQUEE ===== -->
+  <div class="media-marquee">
+    <div class="media-marquee-track">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Harper%27s_Bazaar_color_logo.svg" alt="Harper's Bazaar">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/VOGUE_LOGO.svg" alt="Vogue">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/ELLE_Magazine_Logo.svg" alt="ELLE">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Comopolitan_Magazine_Logo.svg" alt="Cosmopolitan">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Forbes_logo.svg" alt="Forbes">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Town%26Country_wordmark.svg" alt="Town &amp; Country">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/W_magazine_logo.svg" alt="W Magazine">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Harper%27s_Bazaar_color_logo.svg" alt="Harper's Bazaar">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/VOGUE_LOGO.svg" alt="Vogue">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/ELLE_Magazine_Logo.svg" alt="ELLE">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Comopolitan_Magazine_Logo.svg" alt="Cosmopolitan">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Forbes_logo.svg" alt="Forbes">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Town%26Country_wordmark.svg" alt="Town &amp; Country">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/W_magazine_logo.svg" alt="W Magazine">
+    </div>
+  </div>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter">
+    <div class="container fade-in">
+      <h2>Join the Echovelle World</h2>
+      <p>Discover new collections, pearl wisdom, and exclusive offers — delivered to your inbox.</p>
+      <form class="nl-form" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="logo-echovelle.png" alt="ECHOVELLE" class="footer-logo">
+          <p class="footer-brand-text">True Beauty, Never Forced. Handpicked pearls, ethically sourced from the world's finest waters, crafted into timeless jewelry.</p>
+        </div>
+        <div>
+          <h5>Shop</h5>
+          <ul>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Necklaces</a></li>
+            <li><a href="#">Earrings</a></li>
+            <li><a href="#">Rings</a></li>
+            <li><a href="#">Bracelets</a></li>
+            <li><a href="#">Gift Sets</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Our Story</h5>
+          <ul>
+            <li><a href="#">About Echovelle</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Pearl Guide</a></li>
+            <li><a href="#">Our Symbolism</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Customer Service</h5>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Returns &amp; Repairs</a></li>
+            <li><a href="#">Gift Cards</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Policies</h5>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">CA Privacy Rights</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Echovelle. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </div><!-- /.brand-story-wrap -->
+
+  <!-- ===== SCROLL ANIMATIONS ===== -->
+  <script>
+    // ===== PEARL GUIDE STEPS =====
+    (function() {
+      var steps = document.querySelectorAll('.pg-step');
+      var panels = document.querySelectorAll('.pg-main');
+      steps.forEach(function(step) {
+        step.addEventListener('click', function() {
+          steps.forEach(function(s) { s.classList.remove('active'); });
+          panels.forEach(function(p) { p.classList.remove('active'); });
+          step.classList.add('active');
+          var num = step.getAttribute('data-step');
+          document.querySelector('.pg-main[data-pg="' + num + '"]').classList.add('active');
+        });
+      });
+    })();
+
+    // ===== BESTSELLER TABS =====
+    (function() {
+      const tabs = document.querySelectorAll('.bs-tab');
+      const panels = document.querySelectorAll('.bs-panel');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) { t.classList.remove('active'); });
+          panels.forEach(function(p) { p.classList.remove('active'); });
+          tab.classList.add('active');
+          var target = tab.getAttribute('data-tab');
+          document.querySelector('.bs-panel[data-panel="' + target + '"]').classList.add('active');
+        });
+      });
+    })();
+
+    // ===== HERO SLIDER =====
+    (function() {
+      const slider = document.getElementById('heroSlider');
+      const slides = slider.querySelectorAll('.hero-slide');
+      const dotsContainer = slider.querySelector('.hero-dots');
+      const prevBtn = slider.querySelector('.hero-arrow-prev');
+      const nextBtn = slider.querySelector('.hero-arrow-next');
+      let current = 0;
+      let autoTimer;
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('.hero-dot');
+
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        resetAuto();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(current + 1), 5000);
+      }
+      resetAuto();
+    })();
+
+    // Header: transparent on hero, white on scroll, hide on scroll down, show on scroll up
+    const header = document.getElementById('header');
+    const announcement = document.querySelector('.announcement');
+    let lastScrollY = 0;
+    function updateHeader() {
+      const currentY = window.scrollY;
+      const announcementH = announcement ? announcement.offsetHeight : 0;
+      // Position header below announcement when at top
+      header.style.top = currentY <= announcementH ? (announcementH - currentY) + 'px' : '0px';
+      // Transparent on hero, white after scrolling past hero
+      header.classList.toggle('scrolled', currentY > 100);
+      // Hide on scroll down, show on scroll up
+      if (currentY > lastScrollY && currentY > 200) {
+        header.classList.add('header-hidden');
+      } else {
+        header.classList.remove('header-hidden');
+      }
+      lastScrollY = currentY;
+    }
+    window.addEventListener('scroll', updateHeader);
+    updateHeader();
+
+    // Mega menu: add white bg to header on hover
+    document.querySelectorAll('.main-nav > li').forEach(li => {
+      if (li.querySelector('.mega-menu')) {
+        li.addEventListener('mouseenter', () => header.classList.add('mega-open'));
+        li.addEventListener('mouseleave', () => header.classList.remove('mega-open'));
+      }
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
