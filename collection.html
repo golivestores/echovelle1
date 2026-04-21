@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Necklaces — ECHOVELLE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    h1, h2, h3, h4 { font-family: 'Libre Baskerville', Baskerville, Georgia, serif; font-weight: 700; }
+    :root {
+      --gold: #8B7D4A;
+      --gold-light: #b5a272;
+      --gold-dark: #6d6238;
+      --cream: #faf9f7;
+      --cream-dark: #f3f1ec;
+      --charcoal: #1a1a1a;
+      --warm-gray: #6b6560;
+      --light-gray: #e8e5df;
+      --white: #ffffff;
+      --navy: #2c3350;
+    }
+    ::selection { background: #2C3350; color: #fff; }
+    ::-moz-selection { background: #2C3350; color: #fff; }
+    .container { max-width: 1600px; margin: 0 auto; padding: 0 60px; }
+
+    /* ========== ANNOUNCEMENT BAR (identical to index.html) ========== */
+    .announcement {
+      background: #2c3350; color: #fff; text-align: center;
+      padding: 12px 20px; font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; font-weight: 400;
+      position: relative; z-index: 1001; overflow: hidden; height: 40px;
+    }
+    .announcement a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+    .announcement-slider { position: relative; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .announcement-slide { position: absolute; width: 100%; opacity: 0; transform: translateY(100%); transition: opacity 0.5s ease, transform 0.5s ease; white-space: nowrap; }
+    .announcement-slide.active { opacity: 1; transform: translateY(0); }
+    .announcement-slide.exit-up { opacity: 0; transform: translateY(-100%); }
+    .announcement-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 14px; padding: 4px 10px; cursor: pointer; opacity: 0.6; transition: opacity 0.3s; z-index: 2; }
+    .announcement-arrow:hover { opacity: 1; }
+    .announcement-arrow--prev { left: 20px; }
+    .announcement-arrow--next { right: 20px; }
+
+    /* ========== HEADER / NAV (identical to index.html) ========== */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000; background: transparent;
+      transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.3s ease;
+    }
+    .header.scrolled, .header.mega-open { background: var(--white); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .header:hover { background: var(--white); }
+    .header.scrolled .main-nav > li > a,
+    .header.mega-open .main-nav > li > a,
+    .header:hover .main-nav > li > a { color: var(--charcoal); font-weight: 500; }
+    .header.scrolled .nav-icon,
+    .header.mega-open .nav-icon,
+    .header:hover .nav-icon { color: var(--charcoal); }
+    .header.scrolled .logo-img,
+    .header.mega-open .logo-img,
+    .header:hover .logo-img { filter: none; }
+    .header.header-hidden { transform: translateY(-100%); }
+    .header-inner { display: flex; align-items: center; padding: 0 40px; height: 68px; }
+    .logo-link { margin-right: 40px; flex-shrink: 0; position: relative; }
+    .logo-img { width: 250px; height: 40px; object-fit: contain; filter: brightness(0) invert(1); transition: filter 0.35s; }
+    .main-nav { display: flex; gap: 30px; list-style: none; align-items: center; flex: 1; }
+    .main-nav > li { position: static; }
+    .main-nav > li > a {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em;
+      font-weight: 400; color: #fff; transition: color 0.2s;
+      padding: 24px 0; display: block;
+    }
+    .main-nav > li > a:hover, .main-nav > li:hover > a { color: #fff; }
+    .nav-utils { display: flex; align-items: center; gap: 18px; margin-left: auto; flex-shrink: 0; }
+    .nav-icon { width: 20px; height: 20px; color: #fff; transition: color 0.3s; }
+    .nav-icon:hover { color: var(--gold-light); }
+    .nav-utils-left { display: none; align-items: center; gap: 14px; flex-shrink: 0; }
+    .nav-hamburger { background: none; border: 0; padding: 0; cursor: pointer; }
+
+    /* ========== MEGA MENU (identical to index.html) ========== */
+    .mega-menu {
+      position: absolute; top: 100%; left: 0; right: 0; width: 100%;
+      background: var(--white);
+      border-top: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--light-gray);
+      display: none; padding: 36px 40px 40px; z-index: 999;
+    }
+    .main-nav > li:hover .mega-menu { display: flex; }
+    .mega-sidebar { width: 220px; flex-shrink: 0; padding-right: 36px; border-right: 1px solid var(--light-gray); }
+    .mega-sidebar a {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+      font-weight: 600; color: var(--charcoal); padding: 10px 0;
+      transition: color 0.2s;
+    }
+    .mega-sidebar a:hover { color: var(--gold); }
+    .mega-sidebar a::after { content: '>'; font-weight: 400; font-size: 13px; }
+    .mega-sidebar .mega-sidebar-plain::after { content: ''; }
+    .mega-sidebar-bottom { margin-top: auto; padding-top: 24px; border-top: 1px solid var(--light-gray); }
+    .mega-sidebar-bottom a { font-weight: 400; color: var(--warm-gray); font-size: 11px; }
+    .mega-sidebar-bottom a::after { content: ''; }
+    .mega-grid { flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; padding-left: 36px; }
+    .mega-item { text-align: center; cursor: pointer; }
+    .mega-item:hover .mega-item-img { opacity: 0.85; }
+    .mega-item-img { aspect-ratio: 1; background: #f2f0ec; margin-bottom: 10px; background-size: cover; background-position: center; transition: opacity 0.3s; }
+    .mega-item-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--charcoal); font-weight: 400; }
+
+    /* ========== MOTHER'S DAY BANNER ========== */
+    .ms-banner {
+      position: relative;
+      padding: 108px 40px 48px;
+      background-image: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/c5ea690f-31ae-47c0-bf9f-d5c9d7f982f8.jpg?v=1776270520');
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+    .ms-banner-head {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+    }
+    .ms-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+    .ms-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .ms-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 1.75;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .ms-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 14px;
+      max-width: 1560px;
+      margin: 0 auto;
+    }
+    .ms-card {
+      text-align: center;
+      cursor: pointer;
+    }
+    .ms-card-img {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.4s ease;
+    }
+    .ms-card:hover .ms-card-img { transform: translateY(-3px); }
+    .ms-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .ms-card:hover .ms-card-img img { transform: scale(1.04); }
+    .ms-card-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: #ffffff;
+      margin-top: 14px;
+      letter-spacing: 0.04em;
+    }
+    /* Deal cards (image only, same size as product cards) */
+    .ms-card--deal .ms-card-img {
+      background-image: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/69d891c149e9f.jpg?v=1776270509');
+      background-size: cover;
+      background-position: center;
+    }
+    .ms-card--deal-2 .ms-card-img {
+      background-image: url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/9d60a2d3-e20d-4871-97b1-73caee04341f.jpg?v=1776270509');
+    }
+
+    @media (max-width: 1200px) {
+      .ms-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .ms-banner { padding: 100px 0 40px; }
+      .ms-banner-head { padding: 0 20px; }
+      .ms-title { font-size: 28px; }
+      /* Horizontal scroll carousel on mobile */
+      .ms-grid {
+        display: flex;
+        grid-template-columns: none;
+        gap: 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 20px;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 0 6px;
+        margin: 0;
+        scrollbar-width: none;
+      }
+      .ms-grid::-webkit-scrollbar { display: none; }
+      .ms-card {
+        flex: 0 0 45%;
+        scroll-snap-align: start;
+      }
+      .ms-card:first-child { margin-left: 20px; }
+      .ms-card:last-child { margin-right: 20px; }
+      .ms-card .ms-card-img { aspect-ratio: 3 / 4; }
+      .ms-deal-big { font-size: 24px; }
+      .ms-deal-pct { font-size: 36px; }
+      .ms-card-label { font-size: 12px; text-align: left; margin-top: 10px; }
+    }
+
+    /* ========== BREADCRUMB ========== */
+    .col-breadcrumb {
+      padding: 22px 60px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .col-breadcrumb-left { display: flex; align-items: center; }
+    .col-breadcrumb a { color: var(--warm-gray); transition: color 0.2s; }
+    .col-breadcrumb a:hover { color: var(--navy); }
+    .col-breadcrumb .sep { margin: 0 10px; color: #cfcbc4; }
+    .col-breadcrumb .current { color: var(--charcoal); font-weight: 600; }
+    .col-sort {
+      position: relative;
+    }
+    .col-sort-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--charcoal);
+      padding: 8px 0;
+    }
+    .col-sort-btn svg { width: 10px; height: 10px; transition: transform 0.2s; }
+    .col-sort.open .col-sort-btn svg { transform: rotate(180deg); }
+    .col-sort-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--light-gray);
+      min-width: 220px;
+      padding: 8px 0;
+      display: none;
+      z-index: 20;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+    }
+    .col-sort.open .col-sort-menu { display: block; }
+    .col-sort-menu button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 20px;
+      font-size: 13px;
+      color: var(--charcoal);
+      background: none;
+      transition: background 0.2s, color 0.2s;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+    .col-sort-menu button:hover { background: var(--cream); color: var(--gold); }
+    .col-sort-menu button.active { color: var(--gold); font-weight: 500; }
+
+    /* ========== TOOLBAR (filters + sort + count) ========== */
+    .col-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 20px 60px;
+      border-top: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--light-gray);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .col-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .col-filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--charcoal);
+      padding: 8px 0;
+      transition: color 0.2s;
+    }
+    .col-filter-btn:hover { color: var(--gold); }
+    .col-filter-btn svg { width: 14px; height: 14px; }
+    .col-count {
+      font-size: 12px;
+      color: var(--warm-gray);
+      letter-spacing: 0.04em;
+    }
+    .col-sort {
+      position: relative;
+    }
+    .col-sort-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--charcoal);
+      padding: 8px 0;
+    }
+    .col-sort-btn svg { width: 10px; height: 10px; transition: transform 0.2s; }
+    .col-sort.open .col-sort-btn svg { transform: rotate(180deg); }
+    .col-sort-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--light-gray);
+      min-width: 220px;
+      padding: 8px 0;
+      display: none;
+      z-index: 20;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+    }
+    .col-sort.open .col-sort-menu { display: block; }
+    .col-sort-menu button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 20px;
+      font-size: 13px;
+      color: var(--charcoal);
+      background: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .col-sort-menu button:hover { background: var(--cream); color: var(--gold); }
+    .col-sort-menu button.active { color: var(--gold); font-weight: 500; }
+
+    /* ========== LAYOUT ========== */
+    .col-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 40px 60px 24px;
+    }
+
+    /* ========== FILTER SIDEBAR ========== */
+    .col-filters {
+      position: sticky;
+      top: 120px;
+      align-self: start;
+    }
+    .filter-group {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 18px 0;
+    }
+    .filter-group:first-child { padding-top: 0; }
+    .filter-group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--charcoal);
+      padding: 4px 0;
+    }
+    .filter-group-header::after {
+      content: '−';
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--warm-gray);
+      transition: transform 0.2s;
+    }
+    .filter-group.collapsed .filter-group-header::after { content: '+'; }
+    .filter-group-body {
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .filter-group.collapsed .filter-group-body { display: none; }
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--charcoal);
+      cursor: pointer;
+    }
+    .filter-option input[type="checkbox"] {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--warm-gray);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .filter-option input[type="checkbox"]:checked {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .filter-option input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 5px;
+      width: 5px;
+      height: 9px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(45deg);
+    }
+    .filter-option .count {
+      margin-left: auto;
+      color: var(--warm-gray);
+      font-size: 12px;
+    }
+    .filter-color-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-color {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--light-gray);
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .filter-color.active { border-color: var(--navy); transform: scale(1.08); }
+    .filter-price-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-price-input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid var(--light-gray);
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .filter-price-input:focus { border-color: var(--gold); }
+    .filter-price-sep { color: var(--warm-gray); }
+    .filter-clear {
+      margin-top: 28px;
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      border: 1px solid var(--charcoal);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--charcoal);
+      transition: background 0.25s, color 0.25s;
+    }
+    .filter-clear:hover { background: var(--charcoal); color: #fff; }
+
+    /* ========== PRODUCT GRID ========== */
+    .col-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px 24px;
+    }
+    .col-card { position: relative; cursor: pointer; }
+    .col-card-img {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      background: var(--cream);
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .col-card-img-inner {
+      position: absolute;
+      inset: 0;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .col-card-img-inner.hover {
+      background-size: cover;
+      opacity: 0;
+    }
+    .col-card:hover .col-card-img-inner.default { opacity: 0; }
+    .col-card:hover .col-card-img-inner.hover { opacity: 1; }
+    .col-card:hover .col-card-img-inner { transform: scale(1.04); }
+    .col-card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+    .col-card-badge--gold { background: var(--gold); }
+    .col-card-badge--cream { background: #f3efe6; color: var(--navy); }
+    .col-card-quick {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      padding: 12px;
+      background: rgba(255,255,255,0.92);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s, background 0.25s, color 0.25s;
+      z-index: 2;
+    }
+    .col-card:hover .col-card-quick {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .col-card-quick:hover { background: var(--navy); color: #fff; }
+    .col-card-info { text-align: center; }
+    .col-card-category {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .col-card-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .col-card-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .col-card-price-sale { color: #c0392b; }
+    .col-card-price-original {
+      color: var(--warm-gray);
+      text-decoration: line-through;
+      margin-left: 6px;
+      font-weight: 400;
+    }
+    .col-card-stars {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+    .col-card-reviews {
+      font-size: 12px;
+      color: var(--warm-gray);
+      margin-left: 6px;
+    }
+
+    /* ========== LOAD MORE ========== */
+    .col-loadmore-wrap {
+      text-align: center;
+      margin-top: 24px;
+      padding-bottom: 80px;
+    }
+    .col-loadmore-progress {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: var(--warm-gray);
+      margin-bottom: 18px;
+      letter-spacing: 0.04em;
+    }
+    .col-loadmore-progress-bar {
+      width: 120px;
+      height: 2px;
+      background: var(--light-gray);
+      margin: 8px auto 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .col-loadmore-progress-bar::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      width: 50%;
+      background: var(--navy);
+    }
+    .col-loadmore-btn {
+      padding: 16px 44px;
+      background: transparent;
+      border: 1px solid var(--charcoal);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--charcoal);
+      transition: background 0.25s, color 0.25s;
+    }
+    .col-loadmore-btn:hover { background: var(--charcoal); color: #fff; }
+
+    /* ========== NEWSLETTER (identical to index.html) ========== */
+    .newsletter {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--light-gray);
+      padding: 70px 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .newsletter h2 { font-size: 42px; color: #2c3350; margin-bottom: 10px; }
+    .newsletter p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px; font-weight: 300;
+      color: #2c3350; max-width: 520px;
+      margin: 0 auto 28px; line-height: 1.6;
+    }
+    .nl-form { display: flex; max-width: 440px; margin: 0 auto; }
+    .nl-form input {
+      flex: 1; padding: 14px 18px;
+      border: 1px solid var(--light-gray);
+      background: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px; font-weight: 300;
+      color: var(--charcoal); outline: none;
+      transition: border-color 0.3s;
+    }
+    .nl-form input::placeholder { color: #bbb; }
+    .nl-form input:focus { border-color: var(--gold); }
+    .nl-form button {
+      padding: 14px 32px;
+      background: #2C3350; color: #fff;
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.18em; font-weight: 500;
+      transition: background 0.4s;
+    }
+    .nl-form button:hover { background: #1a1a1a; }
+
+    /* ========== FOOTER (identical to index.html) ========== */
+    .footer { background: #2c3350; padding: 60px 0 36px; color: #fff; position: relative; z-index: 2; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+    .footer-brand-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-top: 18px; max-width: 280px; }
+    .footer-logo { width: 250px; height: 40px; object-fit: contain; filter: brightness(0) invert(1); }
+    .footer h5 { font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #fff; margin-bottom: 16px; font-weight: 700; }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 8px; }
+    .footer ul a { font-size: 13px; color: rgba(255,255,255,0.65); transition: color 0.3s; }
+    .footer ul a:hover { color: var(--gold-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(255,255,255,0.5); }
+    .footer-social { display: flex; gap: 16px; align-items: center; }
+    .footer-social a { color: rgba(255,255,255,0.65); transition: color 0.3s; display: inline-flex; }
+    .footer-social a svg { width: 20px; height: 20px; stroke-linecap: round; stroke-linejoin: round; }
+    .footer-social a:hover { color: var(--gold-light); }
+
+    /* Hide mobile filter toggle / toolbar on desktop (overridden in mobile media query) */
+    .col-filter-toggle { display: none; }
+    .col-mobile-toolbar { display: none; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1200px) {
+      .col-grid { grid-template-columns: repeat(2, 1fr); }
+      .col-hero-title { font-size: 48px; }
+    }
+    @media (max-width: 1024px) {
+      .col-layout { grid-template-columns: 200px 1fr; gap: 32px; padding: 32px 32px 64px; }
+      .col-breadcrumb { padding: 18px 32px 8px; }
+      .col-toolbar { padding: 18px 32px; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .header-inner { padding: 0 24px; }
+      .main-nav { gap: 18px; }
+      .main-nav > li > a { font-size: 10px; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .main-nav { display: none; }
+      html, body { overflow-x: clip; }
+      .header-inner {
+        display: grid !important;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        padding: 0 12px !important;
+        height: 54px !important;
+        position: relative !important;
+        gap: 8px;
+      }
+      .nav-utils-left { display: flex !important; justify-self: start; gap: 12px; }
+      .logo-link {
+        position: static !important;
+        margin: 0 !important;
+        margin-right: 0 !important;
+        transform: none !important;
+        justify-self: center;
+      }
+      .logo-img { width: 140px !important; height: auto !important; max-height: 40px; }
+      .nav-utils { display: flex !important; justify-self: end; margin-left: 0 !important; gap: 14px; }
+      .nav-utils .nav-icon[aria-label="Search"] { display: none; }
+      .newsletter h2 {
+        font-size: 24px !important;
+        font-family: 'Libre Baskerville', serif;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+      .col-hero { height: 46vh; min-height: 340px; }
+      .col-hero-title { font-size: 36px; }
+      .col-breadcrumb { padding: 14px 20px 6px; }
+      .col-toolbar { padding: 14px 20px; }
+      .col-layout { grid-template-columns: 1fr; padding: 0 20px 48px; gap: 0; }
+      /* Mobile toolbar row: Filters on left, Sort on right */
+      .col-mobile-toolbar {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        margin: 10px 20px 4px;
+        border-top: 1px solid var(--light-gray);
+        border-bottom: 1px solid var(--light-gray);
+      }
+      .col-filter-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 0;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--charcoal);
+        background: transparent;
+        border: none;
+        line-height: 1;
+      }
+      .col-filter-toggle-label { display: inline-flex; align-items: center; gap: 6px; }
+      .col-filter-toggle-label svg { width: 14px; height: 14px; margin-right: 0 !important; vertical-align: middle; }
+      .col-filter-toggle-chev { width: 8px; height: 8px; transition: transform 0.25s; }
+      .col-filter-toggle.open .col-filter-toggle-chev { transform: rotate(180deg); }
+      /* Hide sort dropdown inside breadcrumb on mobile; it gets moved to mobile toolbar */
+      .col-mobile-toolbar .col-sort { align-self: center; }
+      .col-mobile-toolbar .col-sort .col-sort-btn {
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        padding: 14px 0;
+      }
+      .col-breadcrumb .col-sort { display: none; }
+      .col-mobile-toolbar .col-sort { display: block; }
+      .col-filters {
+        position: static;
+        display: none;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--light-gray);
+        margin-bottom: 24px;
+      }
+      .col-filters.open { display: block; }
+      .col-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 14px; margin-top: 24px; }
+      .col-card-badge { top: 8px; left: 8px; font-size: 8px; letter-spacing: 0.12em; padding: 3px 7px; border-radius: 14px; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
+      .footer-grid > :first-child { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== ANNOUNCEMENT BAR ===== -->
+  <div class="announcement">
+    <button class="announcement-arrow announcement-arrow--prev" aria-label="Previous">&#10094;</button>
+    <div class="announcement-slider">
+      <div class="announcement-slide active">Free Shipping on All Orders (Excludes Remote &amp; Undeliverable Areas)</div>
+      <div class="announcement-slide">$15 OFF Orders Over $250</div>
+      <div class="announcement-slide">$40 OFF Orders Over $500</div>
+      <div class="announcement-slide">$90 OFF Orders Over $1000</div>
+      <div class="announcement-slide">$200 OFF Orders Over $2000</div>
+    </div>
+    <button class="announcement-arrow announcement-arrow--next" aria-label="Next">&#10095;</button>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="nav-utils-left">
+        <button type="button" class="nav-icon nav-hamburger" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        </button>
+        <a href="#" class="nav-icon nav-search-left" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></a>
+      </div>
+      <a href="index.html" class="logo-link">
+        <img src="logo-echovelle.png" alt="ECHOVELLE" class="logo-img">
+      </a>
+      <ul class="main-nav">
+        <li>
+          <a href="collection.html">Necklaces</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="collection.html">Shop Necklaces</a>
+                <a href="collection.html" class="mega-sidebar-plain">View All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0727.jpg?v=1775547658')"></div><p class="mega-item-label">Everyday Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658')"></div><p class="mega-item-label">Gift Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658')"></div><p class="mega-item-label">Statement Necklaces</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656')"></div><p class="mega-item-label">Elevated Necklaces</p></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#">Earrings</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Shop Earrings</a>
+                <a href="#" class="mega-sidebar-plain">View All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/08a4bf12-7975-4101-ac4a-8d1aa3ea688f.png?v=1775547658')"></div><p class="mega-item-label">Stud Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657')"></div><p class="mega-item-label">Drop Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0730_2.jpg?v=1775547658')"></div><p class="mega-item-label">Gift Earrings</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657')"></div><p class="mega-item-label">Statement Earrings</p></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#">Gifts</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Shop Gifts</a>
+                <a href="#" class="mega-sidebar-plain">Gift Cards</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about_600x_3dbaadcc-51b8-440c-b2ed-29ef6c33f41e.png?v=1775547658')"></div><p class="mega-item-label">Gifts for Her</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/0508ins_800x_aec719ef-ec66-4e4c-8682-f4b81b2bc9fa.png?v=1775547659')"></div><p class="mega-item-label">Birthday Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Anniversary Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657')"></div><p class="mega-item-label">Mother&rsquo;s Day Gifts</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661')"></div><p class="mega-item-label">Gift Sets</p></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#">Collections</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">Editorial Edits</a>
+                <a href="#" class="mega-sidebar-plain">Shop All</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Our Story</a>
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658')"></div><p class="mega-item-label">Design Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Gift Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656')"></div><p class="mega-item-label">Elevated Edit</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0684.jpg?v=1775547658')"></div><p class="mega-item-label">New Arrivals</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658')"></div><p class="mega-item-label">Best Sellers</p></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#">About</a>
+          <div class="mega-menu">
+            <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+              <div>
+                <a href="#">The House of Echovelle</a>
+                <a href="#" class="mega-sidebar-plain">Customer Care</a>
+              </div>
+              <div class="mega-sidebar-bottom">
+                <a href="#">Book a Consultation</a>
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about_600x_3dbaadcc-51b8-440c-b2ed-29ef6c33f41e.png?v=1775547658')"></div><p class="mega-item-label">Our Story</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657')"></div><p class="mega-item-label">Pearl Care</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/bg-image-rings.png?v=1775547658')"></div><p class="mega-item-label">Warranty</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661')"></div><p class="mega-item-label">FAQ</p></div>
+              <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Contact Us</p></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-utils">
+        <a href="#" class="nav-icon" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></a>
+        <a href="#" class="nav-icon" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></a>
+        <a href="#" class="nav-icon" aria-label="Bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MOTHER'S DAY BANNER ===== -->
+  <section class="ms-banner">
+    <div class="ms-banner-head">
+      <p class="ms-eyebrow">It's All About Her</p>
+      <h1 class="ms-title">Celebrate Mother's Day</h1>
+      <p class="ms-desc">Heirloom pearls, for the woman who shaped you.</p>
+    </div>
+
+    <div class="ms-grid">
+      <a href="#" class="ms-card ms-card--deal">
+        <div class="ms-card-img"></div>
+        <p class="ms-card-label">Shop All</p>
+      </a>
+      <a href="#" class="ms-card ms-card--deal ms-card--deal-2">
+        <div class="ms-card-img"></div>
+        <p class="ms-card-label">Flash Sale</p>
+      </a>
+      <a href="collection.html" class="ms-card">
+        <div class="ms-card-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/set-copy2_1.jpg?v=1776272281" alt="Pearl Strands"></div>
+        <p class="ms-card-label">Pearl Strands</p>
+      </a>
+      <a href="#" class="ms-card">
+        <div class="ms-card-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/bracelet_1-2_1.jpg?v=1776272280" alt="Studs & Drops"></div>
+        <p class="ms-card-label">Studs &amp; Drops</p>
+      </a>
+      <a href="#" class="ms-card">
+        <div class="ms-card-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Florea.gif?v=1776273054" alt="Bracelets"></div>
+        <p class="ms-card-label">Bracelets</p>
+      </a>
+      <a href="#" class="ms-card">
+        <div class="ms-card-img"><img src="模特图/Rings1模特.webp" alt="Rings"></div>
+        <p class="ms-card-label">Rings</p>
+      </a>
+      <a href="#" class="ms-card">
+        <div class="ms-card-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Orchid02_shooting.webp?v=1776246235" alt="Pendants"></div>
+        <p class="ms-card-label">Pendants</p>
+      </a>
+      <a href="#" class="ms-card">
+        <div class="ms-card-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_16b65d25-52d0-4018-a46f-2e1933affa3f_1200x_1.png?v=1776272722" alt="Gift Sets"></div>
+        <p class="ms-card-label">Gift Sets</p>
+      </a>
+      <a href="#" class="ms-card">
+        <div class="ms-card-img"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/2_07b6af87-def4-4f3c-bf2d-1c36747f5578_1200x_1.gif?v=1776272813" alt="For Her"></div>
+        <p class="ms-card-label">For Her</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== BREADCRUMB + SORT ===== -->
+  <nav class="col-breadcrumb">
+    <div class="col-breadcrumb-left">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="#">Shop</a>
+      <span class="sep">/</span>
+      <span class="current">Necklaces</span>
+    </div>
+    <div class="col-sort" id="colSort">
+      <button class="col-sort-btn">
+        Sort: Featured
+        <svg viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="col-sort-menu">
+        <button class="active" data-sort="featured">Featured</button>
+        <button data-sort="new">New Arrivals</button>
+        <button data-sort="best">Best Sellers</button>
+        <button data-sort="price-asc">Price — Low to High</button>
+        <button data-sort="price-desc">Price — High to Low</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MOBILE TOOLBAR (Filters + Sort) ===== -->
+  <div class="col-mobile-toolbar" id="colMobileToolbar">
+    <button class="col-filter-toggle" id="colFilterToggle" aria-expanded="false">
+      <span class="col-filter-toggle-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:middle;margin-right:8px;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+        Filters
+      </span>
+      <svg class="col-filter-toggle-chev" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+    </button>
+    <!-- .col-sort gets moved here on mobile via JS -->
+  </div>
+
+  <!-- ===== LAYOUT: FILTERS + GRID ===== -->
+  <div class="col-layout">
+
+    <!-- SIDEBAR FILTERS -->
+    <aside class="col-filters" id="colFilters">
+
+      <div class="filter-group">
+        <div class="filter-group-header">Category</div>
+        <div class="filter-group-body">
+          <label class="filter-option"><input type="checkbox" checked> Necklace <span class="count">3</span></label>
+          <label class="filter-option"><input type="checkbox"> Earrings <span class="count">3</span></label>
+          <label class="filter-option"><input type="checkbox"> Bracelet <span class="count">3</span></label>
+          <label class="filter-option"><input type="checkbox"> Ring <span class="count">3</span></label>
+          <label class="filter-option"><input type="checkbox"> Set <span class="count">2</span></label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-header">Material</div>
+        <div class="filter-group-body">
+          <label class="filter-option"><input type="checkbox"> Freshwater <span class="count">4</span></label>
+          <label class="filter-option"><input type="checkbox"> Baroque <span class="count">3</span></label>
+          <label class="filter-option"><input type="checkbox" checked> Akoya <span class="count">5</span></label>
+          <label class="filter-option"><input type="checkbox"> South Sea <span class="count">2</span></label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-header">Pearl Grade</div>
+        <div class="filter-group-body">
+          <label class="filter-option"><input type="checkbox"> AAAA <span class="count">1</span></label>
+          <label class="filter-option"><input type="checkbox" checked> AAA <span class="count">5</span></label>
+          <label class="filter-option"><input type="checkbox"> AA+ <span class="count">4</span></label>
+          <label class="filter-option"><input type="checkbox"> AA <span class="count">2</span></label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-header">Pearl Color</div>
+        <div class="filter-group-body">
+          <div class="filter-color-row">
+            <div class="filter-color active" title="White Rosé" style="background: radial-gradient(ellipse at 30% 28%, #fff, #f0ede8, #e0ddd5);"></div>
+            <div class="filter-color" title="Pink" style="background: radial-gradient(ellipse at 30% 28%, #f5e0d8, #e8c4b8, #d4a898);"></div>
+            <div class="filter-color" title="Golden" style="background: radial-gradient(ellipse at 30% 28%, #f5ecd0, #ddc98a, #c5a860);"></div>
+            <div class="filter-color" title="Tahitian" style="background: radial-gradient(ellipse at 30% 28%, #6a6a6a, #3a3a3a, #1a1a1a);"></div>
+            <div class="filter-color" title="Peach" style="background: radial-gradient(ellipse at 30% 28%, #fbe5d6, #f2c7a8, #d8a47e);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-header">Length</div>
+        <div class="filter-group-body">
+          <label class="filter-option"><input type="checkbox"> 16" Choker <span class="count">2</span></label>
+          <label class="filter-option"><input type="checkbox" checked> 18" Princess <span class="count">5</span></label>
+          <label class="filter-option"><input type="checkbox"> 20" Long Princess <span class="count">3</span></label>
+          <label class="filter-option"><input type="checkbox"> 22" Matinee <span class="count">1</span></label>
+          <label class="filter-option"><input type="checkbox"> 24" Opera <span class="count">1</span></label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-header">Metal</div>
+        <div class="filter-group-body">
+          <label class="filter-option"><input type="checkbox"> 18K Yellow Gold <span class="count">4</span></label>
+          <label class="filter-option"><input type="checkbox" checked> 18K White Gold <span class="count">6</span></label>
+          <label class="filter-option"><input type="checkbox"> 18K Rose Gold <span class="count">2</span></label>
+        </div>
+      </div>
+
+      <button class="filter-clear">Clear All Filters</button>
+    </aside>
+
+    <!-- PRODUCT GRID -->
+    <div class="col-grid" id="colGrid">
+
+      <!-- Earrings -->
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Earrings1透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Earrings1模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Meteorites</p>
+          <h4 class="col-card-name">Double M&eacute;t&eacute;orites Stud Earrings</h4>
+          <p class="col-card-price">&euro;114,00</p>
+          <p><span class="col-card-stars">★★★★☆</span><span class="col-card-reviews">3 reviews</span></p>
+        </div>
+      </a>
+
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <span class="col-card-badge col-card-badge--cream">New Arrival</span>
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Earrings2透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Earrings2模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Eclat</p>
+          <h4 class="col-card-name">Single Eclat Ear Cuff</h4>
+          <p class="col-card-price">&euro;117,00</p>
+          <p><span class="col-card-stars">★★★★☆</span><span class="col-card-reviews">2 reviews</span></p>
+        </div>
+      </a>
+
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Earrings3透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Earrings3模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Croisette</p>
+          <h4 class="col-card-name">Couture Mono Ear Slider</h4>
+          <p class="col-card-price">&euro;169,00</p>
+          <p><span class="col-card-stars">★★★★☆</span><span class="col-card-reviews">3 reviews</span></p>
+        </div>
+      </a>
+
+      <!-- Rings -->
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <span class="col-card-badge">Best Seller</span>
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Rings1透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Rings1模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Solaire</p>
+          <h4 class="col-card-name">Pearl Solitaire Ring</h4>
+          <p class="col-card-price">&euro;189,00</p>
+          <p><span class="col-card-stars">★★★★★</span><span class="col-card-reviews">5 reviews</span></p>
+        </div>
+      </a>
+
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Rings2透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Rings2模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Croisette</p>
+          <h4 class="col-card-name">Twisted Pearl Band</h4>
+          <p class="col-card-price">&euro;210,00</p>
+          <p><span class="col-card-stars">★★★★☆</span><span class="col-card-reviews">4 reviews</span></p>
+        </div>
+      </a>
+
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Rings3透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Rings3模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Eclat</p>
+          <h4 class="col-card-name">Eclat Open Ring</h4>
+          <p class="col-card-price">&euro;145,00</p>
+          <p><span class="col-card-stars">★★★★★</span><span class="col-card-reviews">6 reviews</span></p>
+        </div>
+      </a>
+
+      <!-- Bracelets -->
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <span class="col-card-badge">Best Seller</span>
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Bracelets1透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Bracelets1模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Solaire</p>
+          <h4 class="col-card-name">Pearl Chain Bracelet</h4>
+          <p class="col-card-price">&euro;198,00</p>
+          <p><span class="col-card-stars">★★★★★</span><span class="col-card-reviews">7 reviews</span></p>
+        </div>
+      </a>
+
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <span class="col-card-badge col-card-badge--gold">Premium</span>
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Bracelets2透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Bracelets2模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Croisette</p>
+          <h4 class="col-card-name">Multi-Strand Pearl Cuff</h4>
+          <p class="col-card-price">&euro;265,00</p>
+          <p><span class="col-card-stars">★★★★☆</span><span class="col-card-reviews">3 reviews</span></p>
+        </div>
+      </a>
+
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Bracelets3透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Bracelets3模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Meteorites</p>
+          <h4 class="col-card-name">Delicate Pearl Bangle</h4>
+          <p class="col-card-price">&euro;175,00</p>
+          <p><span class="col-card-stars">★★★★★</span><span class="col-card-reviews">4 reviews</span></p>
+        </div>
+      </a>
+
+      <!-- Necklaces -->
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <span class="col-card-badge">Best Seller</span>
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Necklace1透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Necklaces1模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Solaire</p>
+          <h4 class="col-card-name">Balance Pearl Pendant</h4>
+          <p class="col-card-price">&euro;225,00</p>
+          <p><span class="col-card-stars">★★★★★</span><span class="col-card-reviews">8 reviews</span></p>
+        </div>
+      </a>
+
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Necklace2透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Necklaces2模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Eclat</p>
+          <h4 class="col-card-name">Edison Pearl Choker</h4>
+          <p class="col-card-price">&euro;295,00</p>
+          <p><span class="col-card-stars">★★★★☆</span><span class="col-card-reviews">5 reviews</span></p>
+        </div>
+      </a>
+
+      <a href="product.html" class="col-card">
+        <div class="col-card-img">
+          <span class="col-card-badge col-card-badge--gold">Premium</span>
+          <div class="col-card-img-inner default" style="background-image:url('产品透明底/Necklace3透明底.webp')"></div>
+          <div class="col-card-img-inner hover" style="background-image:url('模特图/Necklaces3模特.webp')"></div>
+          <span class="col-card-quick">Quick Add</span>
+        </div>
+        <div class="col-card-info">
+          <p class="col-card-category">Croisette</p>
+          <h4 class="col-card-name">Tahitian Strand Necklace</h4>
+          <p class="col-card-price">&euro;480,00</p>
+          <p><span class="col-card-stars">★★★★★</span><span class="col-card-reviews">6 reviews</span></p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ===== LOAD MORE ===== -->
+  <div class="col-loadmore-wrap">
+    <p class="col-loadmore-progress">
+      You've viewed <strong>12</strong> of <strong>24</strong> pieces
+      <span class="col-loadmore-progress-bar"></span>
+    </p>
+    <button class="col-loadmore-btn">Load More</button>
+  </div>
+
+  <!-- ===== NEWSLETTER (identical to index.html) ===== -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Join the Echovelle World</h2>
+      <p>Discover new collections, pearl wisdom, and exclusive offers — delivered to your inbox.</p>
+      <form class="nl-form" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER (identical to index.html) ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="logo-echovelle.png" alt="ECHOVELLE" class="footer-logo">
+          <p class="footer-brand-text">True Beauty, Never Forced. Handpicked pearls, ethically sourced from the world's finest waters, crafted into timeless jewelry.</p>
+        </div>
+        <div>
+          <h5>Shop</h5>
+          <ul>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Necklaces</a></li>
+            <li><a href="#">Earrings</a></li>
+            <li><a href="#">Rings</a></li>
+            <li><a href="#">Bracelets</a></li>
+            <li><a href="#">Gift Sets</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Our Story</h5>
+          <ul>
+            <li><a href="#">About Echovelle</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Pearl Guide</a></li>
+            <li><a href="#">Our Symbolism</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Customer Service</h5>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Returns &amp; Repairs</a></li>
+            <li><a href="#">Gift Cards</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Policies</h5>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">CA Privacy Rights</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Echovelle. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M11 8c-1.5 0-3 1-3 3 0 1.2.5 2 1 2"/><path d="M13 7.5c2 0 4 1.2 4 3.8 0 2.5-1.6 4.5-3.8 4.5-1 0-1.8-.5-2.1-1.2"/><path d="M11.2 15l-1.5 6"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 3h-3a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.5 2.5 4.5 5 5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== ANNOUNCEMENT BAR SLIDER (identical to index.html) =====
+    (function() {
+      var slides = document.querySelectorAll('.announcement-slide');
+      var prevBtn = document.querySelector('.announcement-arrow--prev');
+      var nextBtn = document.querySelector('.announcement-arrow--next');
+      var current = 0, timer;
+      function goTo(next) {
+        slides[current].classList.remove('active');
+        slides[current].classList.add('exit-up');
+        var prev = current;
+        setTimeout(function() { slides[prev].classList.remove('exit-up'); }, 500);
+        current = (next + slides.length) % slides.length;
+        slides[current].classList.add('active');
+      }
+      function startAuto() { clearInterval(timer); timer = setInterval(function() { goTo(current + 1); }, 3500); }
+      prevBtn.addEventListener('click', function() { goTo(current - 1); startAuto(); });
+      nextBtn.addEventListener('click', function() { goTo(current + 1); startAuto(); });
+      startAuto();
+    })();
+
+    // ===== HEADER: transparent on hero, white on scroll, hide on scroll down =====
+    (function() {
+      var header = document.getElementById('header');
+      var announcement = document.querySelector('.announcement');
+      var lastY = 0;
+      function update() {
+        var y = window.scrollY;
+        var annH = announcement ? announcement.offsetHeight : 0;
+        header.style.top = y <= annH ? (annH - y) + 'px' : '0px';
+        header.classList.toggle('scrolled', y > 100);
+        if (y > lastY && y > 200) header.classList.add('header-hidden');
+        else header.classList.remove('header-hidden');
+        lastY = y;
+      }
+      window.addEventListener('scroll', update);
+      update();
+      document.querySelectorAll('.main-nav > li').forEach(function(li) {
+        if (li.querySelector('.mega-menu')) {
+          li.addEventListener('mouseenter', function() { header.classList.add('mega-open'); });
+          li.addEventListener('mouseleave', function() { header.classList.remove('mega-open'); });
+        }
+      });
+    })();
+
+    // ===== SORT DROPDOWN =====
+    (function() {
+      var sort = document.getElementById('colSort');
+      if (!sort) return;
+      var btn = sort.querySelector('.col-sort-btn');
+      var buttons = sort.querySelectorAll('.col-sort-menu button');
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        sort.classList.toggle('open');
+      });
+      document.addEventListener('click', function() { sort.classList.remove('open'); });
+      buttons.forEach(function(b) {
+        b.addEventListener('click', function() {
+          buttons.forEach(function(x) { x.classList.remove('active'); });
+          b.classList.add('active');
+          btn.firstChild.textContent = 'Sort: ' + b.textContent.trim() + ' ';
+          sort.classList.remove('open');
+        });
+      });
+    })();
+
+    // ===== FILTER GROUP COLLAPSE =====
+    (function() {
+      document.querySelectorAll('.filter-group-header').forEach(function(h) {
+        h.addEventListener('click', function() {
+          h.parentElement.classList.toggle('collapsed');
+        });
+      });
+      // Color swatch toggle
+      document.querySelectorAll('.filter-color').forEach(function(c) {
+        c.addEventListener('click', function() { c.classList.toggle('active'); });
+      });
+    })();
+
+    // ===== FILTERS TOGGLE (mobile) =====
+    (function() {
+      var btn = document.getElementById('colFilterToggle');
+      var filters = document.getElementById('colFilters');
+      if (!btn || !filters) return;
+      btn.addEventListener('click', function() {
+        var isOpen = filters.classList.toggle('open');
+        btn.classList.toggle('open', isOpen);
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    })();
+
+    // ===== MOBILE: move Sort dropdown next to Filters button =====
+    (function() {
+      var sortEl = document.getElementById('colSort');
+      var breadcrumb = document.querySelector('.col-breadcrumb');
+      var mobileBar = document.getElementById('colMobileToolbar');
+      if (!sortEl || !breadcrumb || !mobileBar) return;
+      function placeSort() {
+        var isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if (isMobile && sortEl.parentElement !== mobileBar) {
+          mobileBar.appendChild(sortEl);
+        } else if (!isMobile && sortEl.parentElement !== breadcrumb) {
+          breadcrumb.appendChild(sortEl);
+        }
+      }
+      placeSort();
+      window.addEventListener('resize', placeSort);
+    })();
+  </script>
+</body>
+</html>

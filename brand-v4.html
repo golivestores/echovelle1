@@ -1,0 +1,1381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+<title>Crafted with Purpose — ECHOVELLE</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Original RL CSS (exact order from source) -->
+<link rel="stylesheet" type="text/css" href="https://corporate.ralphlauren.com/on/demandware.static/Sites-RalphLauren_Corporate-Site/-/default/v1776592638045/css/style.css">
+<link rel="stylesheet" type="text/css" href="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/_common/fonts/df-refresh/fonts.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.2/css/swiper.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/_common/css/rlc-core.min.css">
+<link rel="stylesheet" type="text/css" href="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/_common/css/rlc-creative.3.7.1.min.css">
+<link href="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/img/202509/citizenship/cs_202509.css" rel="stylesheet" type="text/css">
+
+<style>
+/* ===== ECHOVELLE Font Overrides ===== */
+body, p, span, div, a, li, td, th, input, button, select, textarea {
+  font-family: 'Libre Baskerville', Baskerville, Georgia, serif !important;
+}
+/* All descriptive text: match founder body style */
+.rlc-dek, .rlc-p,
+.ev-pillar-body, .ev-brand-sub,
+.ev-edits-panel-desc,
+.ev-founder-body p,
+.ev-estate-gallery .eg-caption p,
+.rlc-copygroup p,
+.rlc-section--desc p {
+  font-size: 15px !important;
+  line-height: 1.9 !important;
+  color: #3a3a3a !important;
+}
+h1, h2, h3, h4, h5, h6,
+.rlc-font--lejeune, .rlc-creative_v3 .rlc-title, #rlc-section_report-box--large .rlc-title,
+.ev-brand-title, .ev-pillar-title, .ev-edits-panel-title, .ev-founder-quote, .ev-founder-signature,
+.ev-art-series-headline, .ev-video-banner-text {
+  font-family: 'Libre Baskerville', Baskerville, Georgia, serif !important;
+  font-weight: 700 !important;
+}
+.rlc-dek, .rlc-p, .rlc-eyebrow--copy, .breadcrumb-element, .csr-sub-nav-item a, .rlc-cta {
+  font-family: 'Libre Baskerville', Baskerville, Georgia, serif !important;
+}
+
+/* ===== ECHOVELLE Brand Color Override ===== */
+.csr-sub-nav { background: #2c3350 !important; }
+#rlc-section_report-box--large { background: transparent !important; color: #1a1a1a !important; }
+#rlc-section_report-box--large .rlc-title { color: #2c3350 !important; }
+#rlc-section_report-box--large .rlc-cta { color: #2c3350 !important; border-color: #2c3350 !important; }
+
+/* ===== Page Wrapper ===== */
+body { margin: 0; padding: 0; }
+#rl-content { padding-top: 0; font-size: 16px; }
+@media (max-width: 1199px) { #rl-content { font-size: 1.333333333vw; } }
+@media (max-width: 767px) { #rl-content { font-size: 2.5vw; } }
+
+/* ===== Remove side spacing from RL framework ===== */
+#rl-content { max-width: 100% !important; width: 100% !important; margin: 0 !important; }
+.rlc-creative_v3.rlc-1440_375 .rlc-fullbleed,
+.rlc-creative_v3 .rlc-fullbleed { max-width: 100% !important; width: 100% !important; }
+
+/* Mobile: square hero banner (1:1) */
+@media (max-width: 767px) {
+  #rlc-hero { aspect-ratio: 1 / 1 !important; height: auto !important; min-height: 0 !important; position: relative !important; }
+  #rlc-hero .rlc-imagery { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+  #rlc-hero .rlc-picture { width: 100% !important; height: 100% !important; display: block !important; }
+  #rlc-hero .rlc-image { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+}
+#rlc-wrapper--progress-boxes { justify-content: center !important; }
+#rlc-wrapper--progress-boxes .rlc-progress_box .rlc-imagery { position: relative !important; width: 100% !important; padding-top: 100% !important; overflow: hidden !important; }
+#rlc-wrapper--progress-boxes .rlc-progress_box .rlc-imagery .rlc-image { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+
+/* ===== Main section background blur ===== */
+#rlc-section_main.rlc-bg.rlc-wasviewed::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: inherit; background-size: cover; background-position: bottom center; filter: blur(14px); z-index: 0; }
+#rlc-section_main.rlc-bg { position: relative; overflow: hidden; }
+#rlc-section_main .rlc-wrapper--inner { position: relative; z-index: 1; }
+
+/* ===== Main section text white ===== */
+#rlc-section_main, #rlc-section_main .rlc-p, #rlc-section_main .rlc-dek,
+#rlc-section_main .rlc-title, #rlc-section_main .rlc-h2,
+#rlc-section_main .rlc-cta, #rlc-section_main .rlc-linecta,
+#rlc-section_main .rlc-a { color: #1a1a1a !important; }
+#rlc-section_main .rlc-linecta::after { background-color: #1a1a1a !important; }
+
+/* ===== Case Study 1 slide image aspect ratio lock ===== */
+#rlc-study_1 .rlc-carousel.rlc-banner .rlc-slide .rlc-imagery { position: relative !important; width: 100% !important; aspect-ratio: 16 / 9 !important; overflow: hidden !important; }
+#rlc-study_1 .rlc-carousel.rlc-banner .rlc-slide .rlc-imagery .rlc-image { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+
+/* ===== Case Study 2 slide image aspect ratio lock ===== */
+#rlc-study_2 .rlc-carousel.rlc-banner .rlc-slide .rlc-imagery { position: relative !important; width: 100% !important; aspect-ratio: 16 / 9 !important; overflow: hidden !important; }
+#rlc-study_2 .rlc-carousel.rlc-banner .rlc-slide .rlc-imagery .rlc-image { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+/* Mobile: let the slide follow the image's natural aspect (no crop) */
+@media (max-width: 767px) {
+  #rlc-study_2 .rlc-carousel.rlc-banner .rlc-slide .rlc-imagery {
+    aspect-ratio: auto !important;
+    height: auto !important;
+  }
+  #rlc-study_2 .rlc-carousel.rlc-banner .rlc-slide .rlc-imagery .rlc-image {
+    position: relative !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  /* Text overlays image (like desktop) but anchored to bottom, left-aligned */
+  #rlc-study_2 .rlc-carousel.rlc-banner .rlc-slide {
+    position: relative !important;
+  }
+  #rlc-study_2 .rlc-carousel.rlc-banner .rlc-slide .rlc-all-foreground {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 20px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+  #rlc-study_2 .rlc-carousel.rlc-banner .rlc-slide .rlc-copygroup,
+  #rlc-study_2 .rlc-carousel.rlc-banner .rlc-slide .rlc-copygroup * {
+    text-align: left !important;
+    align-items: flex-start !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* ===== Case Study 2 text offset ===== */
+@media (min-width: 768px) {
+  #rlc-study_2 .rlc-slide.rlc-image--left .rlc-copygroup { padding-left: calc(29.9375em + 150px) !important; }
+  #rlc-study_2 .rlc-slide.rlc-image--right .rlc-copygroup { padding-right: calc(29.9375em + 190px) !important; }
+}
+
+/* ===== Brand Sections (from v1) ===== */
+.ev-container { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+.ev-brand-section { padding: 110px 0; background: transparent; }
+@media (max-width: 767px) {
+  #ev-founder.ev-brand-section { padding: 40px 0 8px; }
+  #rlc-explore_more-20250924 { padding-top: 8px !important; margin-top: 0 !important; }
+  .rlc-wrapper--inner.rlc-all-padding-none { padding: 0 !important; margin: 0 !important; }
+  /* Make the Sustainability & Craftsmanship Report show on mobile too */
+  #rlc-section_report-box--large.rlc-mobile-hidden {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 24px 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #rlc-section_report-box--large .rlc-container-cta { margin: 0 !important; padding: 0 !important; }
+  #rlc-section_report-box--large .rlc-textgroup {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+  #rlc-section_report-box--large .rlc-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    padding: 0 !important;
+    margin: 0 auto 20px !important;
+  }
+  #rlc-section_report-box--large .rlc-container-cta {
+    width: auto !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
+.ev-brand-section--cream { background: transparent; }
+.ev-brand-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 600; }
+.ev-brand-title { font-size: 42px; font-weight: 700; color: #2c3350; line-height: 1.2; margin-bottom: 10px; }
+.ev-brand-sub { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; color: #2c3350; line-height: 1.6; max-width: 560px; }
+
+/* Hero banner title — match index.html .hero h1 */
+#rlc-hero .rlc-title.rlc-h1 { font-size: 3.125rem !important; color: #fff !important; font-weight: 700 !important; line-height: 1.1 !important; font-family: 'Libre Baskerville', Baskerville, Georgia, serif !important; }
+@media (max-width: 1024px) { #rlc-hero .rlc-title.rlc-h1 { font-size: 44px !important; } }
+@media (max-width: 768px) {
+  #rlc-hero .rlc-title.rlc-h1 { font-size: 36px !important; }
+  /* Section titles on mobile — match index.html (24px Libre Baskerville) */
+  .ev-brand-title,
+  .ev-video-banner-text,
+  html body #rlc-explore_more-20250924 > .rlc-copygroup h2.rlc-title,
+  html body #rlc-explore_more-20250924 > .rlc-copygroup h2.rlc-title.rlc-h2,
+  html body #rlc-section_report-box--large .rlc-title,
+  html body #rlc-section_report-box--large h2.rlc-title {
+    font-size: 24px !important;
+    font-family: 'Libre Baskerville', serif !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
+  }
+}
+
+/* Pillars */
+.ev-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 64px; }
+.ev-pillar { text-align: center; }
+/* Mobile: 3 pillars become a horizontal-scroll carousel */
+@media (max-width: 767px) {
+  .ev-pillars {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 16px !important;
+    margin-top: 40px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0 8px;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    scrollbar-width: none;
+  }
+  .ev-pillars::-webkit-scrollbar { display: none; }
+  .ev-pillar {
+    flex: 0 0 82%;
+    max-width: 82%;
+    min-width: 82%;
+    scroll-snap-align: start;
+  }
+  .ev-pillar:first-child { margin-left: 20px; }
+  .ev-pillar:last-child { margin-right: 20px; }
+}
+.ev-pillar-num { display: none; }
+.ev-pillar-divider { width: 36px; height: 1px; background: var(--gold); margin: 0 auto 28px; }
+.ev-pillar-title { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: #2c3350; margin-bottom: 14px; line-height: 1.3; }
+.ev-pillar-body { font-size: 14px; color: var(--warm-gray); line-height: 1.85; max-width: 340px; margin: 0 auto; font-family: 'Montserrat', sans-serif; }
+
+/* Edits Carousel */
+.ev-edits { position: relative; height: 520px; overflow: hidden; background: transparent; width: 100vw !important; max-width: 100vw !important; margin-left: calc(-50vw + 50%) !important; margin-right: calc(-50vw + 50%) !important; }
+.ev-edits-bg { position: absolute; inset: 0; z-index: 0; }
+.ev-edits-bg-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.4); transition: opacity 1.6s ease, transform 3.6s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.ev-edits-bg-slide.active { opacity: 1; transform: scale(1); }
+.ev-edits-stage { position: relative; z-index: 2; max-width: 1200px; height: 100%; margin: 0 auto; }
+.ev-edits-slide { position: absolute; inset: 0; padding: 0 60px; display: flex; align-items: center; justify-content: center; gap: 0; opacity: 0; pointer-events: none; transition: opacity 0.45s ease; }
+.ev-edits-slide.active { opacity: 1; pointer-events: auto; }
+.ev-edits-panel { background: #1a1a1a; color: #fff; padding: 52px 62px; width: 700px; flex-shrink: 0; position: relative; transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); text-align: left; }
+.ev-edits-panel-title { font-family: 'Libre Baskerville', serif; font-size: 40px; font-weight: 700; color: #fff; margin-bottom: 18px; line-height: 1.2; letter-spacing: 0.01em; }
+.ev-edits-panel-desc { font-size: 15px; font-weight: 300; font-style: normal !important; color: #fff !important; line-height: 1.75; margin-bottom: 34px; }
+.ev-edits-panel-ctas { display: none; }
+.ev-edits-btn { display: inline-block; padding: 15px 28px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; transition: background 0.3s, color 0.3s, border-color 0.3s; text-decoration: none; }
+.ev-edits-btn--light { background: #fff; color: #1a1a1a !important; }
+.ev-edits-btn--light:hover { background: var(--gold-light); color: #fff; }
+.ev-edits-btn--ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.45); }
+.ev-edits-btn--ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+.ev-edits-product { background: #fff; padding: 18px 18px 28px; width: 360px; flex-shrink: 0; text-align: center; transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
+.ev-edits-product-img { aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: 18px; background: #f3f1ec; }
+.ev-edits-product-img img { width: 100%; height: 100%; object-fit: cover; }
+.ev-edits-product-name { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+.ev-edits-product-price { font-family: 'Montserrat', sans-serif; font-size: 15px; color: #444; font-weight: 400; }
+.ev-edits-shop-now { display: inline-block; margin-top: 14px; padding: 12px 32px; background: #2c3350; color: #fff !important; font-size: 12px !important; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; transition: background 0.3s; text-decoration: none; }
+.ev-edits-shop-now:hover { background: #1a1a1a; }
+.ev-edits-slide.exiting .ev-edits-panel { transform: translateX(-10px); }
+.ev-edits-slide.exiting .ev-edits-product { transform: translateX(10px); }
+.ev-edits-slide.pre-enter .ev-edits-panel { transform: translateX(-10px); transition: none; }
+.ev-edits-slide.pre-enter .ev-edits-product { transform: translateX(10px); transition: none; }
+/* Mobile: no horizontal shake on panel OR product when switching slides */
+@media (max-width: 1024px) {
+  .ev-edits-slide.exiting .ev-edits-panel,
+  .ev-edits-slide.pre-enter .ev-edits-panel,
+  .ev-edits-slide.exiting .ev-edits-product,
+  .ev-edits-slide.pre-enter .ev-edits-product { transform: none !important; }
+  .ev-edits-panel,
+  .ev-edits-product { transition: none !important; }
+}
+.ev-edits-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(255,255,255,0.15); overflow: hidden; }
+.ev-edits-progress-bar { height: 100%; background: var(--gold-light); width: 0; }
+.ev-edits-nav { position: absolute; z-index: 5; bottom: -50px; right: 30px; display: flex; gap: 10px; }
+.ev-edits-nav-btn { width: 38px; height: 38px; border-radius: 50%; background: #fff; color: #1a1a1a; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.2); transition: background 0.3s, color 0.3s; border: none; }
+.ev-edits-nav-btn:hover { background: var(--gold-light); color: #fff; }
+.ev-edits-nav-btn svg { width: 16px; height: 16px; }
+@media (min-width: 1280px) { .ev-edits { height: 680px; } }
+@media (max-width: 1024px) { .ev-edits { height: 640px; } .ev-edits-slide { flex-direction: column; justify-content: center; align-items: center; padding: 0 32px; gap: 24px; } .ev-edits-panel { width: 100%; max-width: 460px; padding: 28px 32px; } .ev-edits-product { width: 240px; } .ev-pillars { grid-template-columns: 1fr; gap: 48px; } .ev-brand-section { padding: 80px 0; } .ev-founder { grid-template-columns: 1fr !important; gap: 40px !important; } .ev-founder-img { max-width: 520px; margin: 0 auto; } }
+@media (max-width: 768px) {
+  .ev-edits { height: 100svh; min-height: 560px; }
+  .ev-edits-slide {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 16px 20px;
+    gap: 14px;
+  }
+  .ev-edits-panel {
+    width: 100%;
+    max-width: none;
+    padding: 30px 24px 36px;
+  }
+  .ev-edits-panel-title { font-size: 26px; margin-bottom: 12px; }
+  .ev-edits-panel-desc { font-size: 14px; margin-bottom: 20px; }
+  .ev-edits-product {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 78%;
+    max-width: 320px;
+    padding: 10px 14px 10px 10px;
+    text-align: left;
+  }
+  .ev-edits-product-img {
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 0;
+    aspect-ratio: 1 / 1;
+  }
+  .ev-edits-product-name { font-size: 13px; margin-bottom: 4px; line-height: 1.25; }
+  .ev-edits-product-price { font-size: 12px; }
+  .ev-edits-nav {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: auto !important;
+    margin-top: 4px;
+    justify-content: center;
+  }
+  .ev-container { padding: 0 24px; }
+}
+
+/* Founder */
+.ev-founder { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: center; text-align: left !important; }
+.ev-founder-img { aspect-ratio: 3 / 4; overflow: hidden; }
+.ev-founder-img img { width: 100%; height: 100%; object-fit: cover; }
+.ev-founder-quote { font-family: 'Libre Baskerville', serif; font-size: 28px; font-style: italic; font-weight: 700; color: #2c3350; line-height: 1.5; margin-bottom: 28px; position: relative; padding-left: 30px; }
+.ev-founder-quote::before { content: '\201C'; position: absolute; left: -4px; top: -20px; font-size: 96px; line-height: 1; color: var(--gold); font-weight: 400; font-family: 'Libre Baskerville', serif; }
+.ev-founder-body p { font-size: 15px; line-height: 1.9; color: #3a3a3a; margin-bottom: 18px; font-family: 'Montserrat', sans-serif; }
+.ev-founder-body p:last-child { margin-bottom: 0; }
+.ev-founder-signature { margin-top: 32px; font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: 20px; color: #2c3350; }
+.ev-founder-signature-role { display: block; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-gray); margin-top: 6px; font-style: normal; font-weight: 500; }
+
+/* ===== Heirloom Statement (scroll-fill) ===== */
+.ev-art-series { position: relative; background: transparent; z-index: 3; }
+.ev-art-series-intro { text-align: left; max-width: 1600px; margin: 0 auto; padding: 30px 60px 60px; }
+.ev-art-series-headline { font-family: 'Libre Baskerville', Baskerville, Georgia, serif !important; font-size: 22px; line-height: 1.3; font-weight: 700; letter-spacing: 0.02em; margin: 0; }
+.ev-art-series-line { display: block; }
+.ev-art-word { --fill: 0%; display: inline-block; background: linear-gradient(90deg, #2c3350 0%, #2c3350 var(--fill), #a8b4ce var(--fill), #a8b4ce 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+@media (max-width: 1024px) { .ev-art-series-intro { padding: 64px 32px 48px; } .ev-art-series-headline { font-size: 32px; } }
+@media (max-width: 640px) { .ev-art-series-intro { padding: 20px 20px 16px; } .ev-art-series-headline { font-size: 15px; } }
+
+/* ===== Estate Gallery (marquee) ===== */
+.ev-estate-gallery { background: transparent; padding: 2em 0 2.5em; overflow: hidden; width: 100vw !important; max-width: 100vw !important; margin-left: calc(-50vw + 50%) !important; margin-right: calc(-50vw + 50%) !important; }
+@media (max-width: 640px) { .ev-estate-gallery { padding: 0.5em 0 1em; } }
+.ev-gallery-marquee { overflow: hidden; }
+.ev-gallery-track { display: flex; align-items: flex-start; width: max-content; animation: evGalleryScroll 40s linear infinite; }
+.ev-gallery-marquee:hover .ev-gallery-track { animation-play-state: paused; }
+@keyframes evGalleryScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ev-estate-gallery .eg-item { flex-shrink: 0; padding-right: 30px; display: inline-block; }
+@media (max-width: 640px) { .ev-estate-gallery .eg-item { padding-right: 17px; } }
+.ev-estate-gallery .eg-img { position: relative; overflow: hidden; border-radius: 10px; }
+.ev-estate-gallery .eg-img-l { width: 420px; height: 528px; }
+.ev-estate-gallery .eg-img-s { width: 306px; height: 408px; }
+.ev-estate-gallery .eg-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border: 0; border-radius: 10px; display: block; }
+@media (max-width: 640px) { .ev-estate-gallery .eg-img-l { width: 210px; height: 260px; } .ev-estate-gallery .eg-img-s { width: 153px; height: 200px; } }
+.ev-estate-gallery .eg-caption { display: flex; padding-top: 18px; }
+.ev-estate-gallery .eg-caption p {
+  flex-grow: 1;
+  width: 0;
+  font-family: 'Libre Baskerville', Baskerville, Georgia, serif !important;
+  font-weight: 700;
+  font-size: 15px !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.02em;
+  color: #3a3a3a !important;
+}
+
+/* ===== Video Banner ===== */
+.ev-video-banner { position: relative; width: 100% !important; max-width: 100% !important; height: 80vh; overflow: hidden; margin: 0 !important; padding: 0 !important; }
+.ev-video-banner-media { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.ev-video-banner-media video { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.ev-video-banner-intro { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 24px; pointer-events: none; animation: evIntroFade 5.5s ease-out forwards; }
+.ev-video-banner-text { font-family: 'Libre Baskerville', serif; font-size: 42px; font-weight: 700; color: #2c3350; line-height: 1.2; letter-spacing: 0.02em; margin: 0; }
+@keyframes evIntroFade { 0% { opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+@media (max-width: 768px) { .ev-video-banner-text { font-size: 36px; } }
+.ev-video-controls { position: absolute; bottom: 1.25rem; right: 3.75rem; z-index: 5; display: flex; gap: 10px; }
+@media (max-width: 768px) { .ev-video-controls { right: 10px; } }
+.ev-ctrl-btn { width: 2.13rem; height: 2.13rem; border: 1px solid #fff; border-radius: 2.13rem; background: rgba(0,0,0,0.34); color: #fff; cursor: pointer; position: relative; padding: 0; }
+.ev-ctrl-btn svg { position: absolute; width: 100%; height: 100%; left: 0; top: 0; fill: #fff; }
+.ev-ctrl-btn .icon-hidden { display: none; }
+
+/* ===== Title size alignment ===== */
+#rlc-explore_more-20250924 .rlc-title.rlc-h2 { font-size: 42px !important; color: #2c3350 !important; }
+#rlc-explore_more-20250924 .rlc-slide .rlc-title { font-size: 22px !important; color: #2c3350 !important; text-align: left !important; }
+#rlc-explore_more-20250924 .rlc-slide .rlc-copygroup { text-align: left !important; }
+#rlc-section_report-box--large .rlc-title { font-size: 42px !important; }
+
+/* ===== Explore More arrow positioning ===== */
+@media (min-width: 768px) {
+  #rlc-explore_more-20250924 .rlc-carousel.rlc-category_carousel { margin-left: 0 !important; width: 100% !important; }
+  #rlc-explore_more-20250924 .rlc-carousel .rlc-carousel-arrow { z-index: 10 !important; }
+}
+
+/* ===== Explore More image aspect ratio lock ===== */
+#rlc-explore_more-20250924 .rlc-slide .rlc-imagery { position: relative !important; width: 100% !important; padding-top: 125% !important; overflow: hidden !important; }
+#rlc-explore_more-20250924 .rlc-slide .rlc-imagery .rlc-image { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+/* Hide broken scrollbar/pagination under the Explore More carousel */
+#rlc-explore_more-20250924 .swiper-scrollbar,
+#rlc-explore_more-20250924 .swiper-pagination,
+#rlc-explore_more-20250924 .rlc-carousel-scrollbar,
+#rlc-explore_more-20250924 .rlc-carousel-pagination { display: none !important; }
+
+/* ===== ECHOVELLE Variables ===== */
+:root {
+  --gold: #8B7D4A; --gold-light: #b5a272; --gold-dark: #6d6238;
+  --cream: #faf9f7; --cream-dark: #f3f1ec;
+  --charcoal: #1a1a1a; --warm-gray: #6b6560;
+  --light-gray: #e8e5df; --white: #ffffff;
+}
+*, *::before, *::after { box-sizing: border-box; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== Announcement Bar ===== */
+.announcement { background: #2c3350; color: #fff; text-align: center; padding: 12px 20px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; position: relative; z-index: 1001; overflow: hidden; height: 40px; }
+.announcement a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+.announcement-slider { position: relative; height: 100%; display: flex; align-items: center; justify-content: center; }
+.announcement-slide { position: absolute; width: 100%; opacity: 0; transform: translateY(100%); transition: opacity 0.5s ease, transform 0.5s ease; white-space: nowrap; }
+.announcement-slide.active { opacity: 1; transform: translateY(0); }
+.announcement-slide.exit-up { opacity: 0; transform: translateY(-100%); }
+.announcement-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 14px; padding: 4px 10px; cursor: pointer; opacity: 0.6; transition: opacity 0.3s; z-index: 2; }
+.announcement-arrow:hover { opacity: 1; }
+.announcement-arrow--prev { left: 20px; }
+.announcement-arrow--next { right: 20px; }
+
+/* ===== Header (identical to index.html) ===== */
+.header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000; background: transparent; border-bottom: none;
+  transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.3s ease;
+}
+.header.scrolled, .header.mega-open { background: var(--white); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+.header:hover { background: var(--white); }
+.header.scrolled .main-nav > li > a,
+.header.mega-open .main-nav > li > a,
+.header:hover .main-nav > li > a { color: var(--charcoal); font-weight: 500; }
+.header.scrolled .nav-icon,
+.header.mega-open .nav-icon,
+.header:hover .nav-icon { color: var(--charcoal); }
+.header.scrolled .logo-img,
+.header.mega-open .logo-img,
+.header:hover .logo-img { filter: none; }
+.header.header-hidden { transform: translateY(-100%); }
+.header-inner { display: flex; align-items: center; padding: 0 40px; height: 68px; }
+.logo-link { margin-right: 40px; flex-shrink: 0; position: relative; }
+.logo-img { width: 250px; height: 40px; object-fit: contain; filter: brightness(0) invert(1); transition: filter 0.35s; }
+.main-nav { display: flex; gap: 30px; list-style: none; align-items: center; flex: 1; margin: 0; padding: 0; }
+.main-nav > li { position: static; }
+.main-nav > li > a {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em;
+  font-weight: 400; color: #fff; transition: color 0.2s;
+  padding: 24px 0; display: block; font-family: 'Montserrat', sans-serif;
+}
+.main-nav > li > a:hover, .main-nav > li:hover > a { color: #fff; }
+.main-nav > li > a::after { display: none; }
+.nav-utils { display: flex; align-items: center; gap: 18px; margin-left: auto; flex-shrink: 0; }
+.nav-icon { width: 20px; height: 20px; color: #fff; transition: color 0.3s; }
+.nav-icon:hover { color: var(--gold-light); }
+.nav-utils-left { display: none; align-items: center; gap: 14px; flex-shrink: 0; }
+.nav-hamburger { background: none; border: 0; padding: 0; cursor: pointer; }
+
+/* ===== Mega Menu ===== */
+.mega-menu {
+  position: absolute; top: 100%; left: 0; right: 0; width: 100%;
+  background: var(--white);
+  border-top: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
+  display: none; padding: 36px 40px 40px; z-index: 999;
+}
+.main-nav > li:hover .mega-menu { display: flex; }
+.mega-sidebar { width: 220px; flex-shrink: 0; padding-right: 36px; border-right: 1px solid var(--light-gray); }
+.mega-sidebar a {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  font-weight: 600; color: var(--charcoal); padding: 10px 0;
+  transition: color 0.2s; text-decoration: none;
+}
+.mega-sidebar a:hover { color: var(--gold); }
+.mega-sidebar a::after { content: '>'; font-weight: 400; font-size: 13px; }
+.mega-sidebar .mega-sidebar-plain::after { content: ''; }
+.mega-sidebar-bottom { margin-top: auto; padding-top: 24px; border-top: 1px solid var(--light-gray); }
+.mega-sidebar-bottom a { font-weight: 400; color: var(--warm-gray); font-size: 11px; }
+.mega-sidebar-bottom a::after { content: ''; }
+.mega-grid { flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; padding-left: 36px; }
+.mega-item { text-align: center; cursor: pointer; }
+.mega-item:hover .mega-item-img { opacity: 0.85; }
+.mega-item-img { aspect-ratio: 1; background: #f2f0ec; margin-bottom: 10px; background-size: cover; background-position: center; transition: opacity 0.3s; }
+.mega-item-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--charcoal); font-weight: 400; }
+
+/* ===== Footer ===== */
+.ev-footer { background: #2c3350; border-top: none; padding: 60px 0 36px; color: #fff; }
+.ev-footer .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+.ev-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+.ev-footer-brand-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-top: 18px; max-width: 280px; font-family: 'Montserrat', sans-serif; }
+.ev-footer-logo { width: 250px; height: 40px; object-fit: contain; filter: brightness(0) invert(1); }
+.ev-footer h5 { font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #fff; margin-bottom: 16px; font-weight: 700; }
+.ev-footer ul { list-style: none; margin: 0; padding: 0; }
+.ev-footer ul li { margin-bottom: 8px; }
+.ev-footer ul a { font-size: 13px; color: rgba(255,255,255,0.65); transition: color 0.3s; font-family: 'Montserrat', sans-serif; }
+.ev-footer ul a:hover { color: var(--gold-light); }
+.ev-footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(255,255,255,0.5); font-family: 'Montserrat', sans-serif; }
+.ev-footer-social { display: flex; gap: 16px; align-items: center; }
+.ev-footer-social a { color: rgba(255,255,255,0.65); transition: color 0.3s; display: inline-flex; }
+.ev-footer-social a svg { width: 20px; height: 20px; stroke-linecap: round; stroke-linejoin: round; }
+.ev-footer-social a:hover { color: var(--gold-light); }
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .ev-footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .header-inner { padding: 0 24px; }
+  .main-nav { gap: 18px; }
+  .main-nav > li > a { font-size: 10px; }
+}
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+  html, body { overflow-x: clip; }
+  .header-inner {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 12px !important;
+    height: 54px !important;
+    position: relative !important;
+    gap: 8px;
+  }
+  .nav-utils-left { display: flex !important; justify-self: start; gap: 12px; }
+  .logo-link {
+    position: static !important;
+    margin: 0 !important;
+    margin-right: 0 !important;
+    transform: none !important;
+    justify-self: center;
+  }
+  .logo-img { width: 140px !important; height: auto !important; max-height: 40px; }
+  .nav-utils { display: flex !important; justify-self: end; margin-left: 0 !important; gap: 14px; }
+  .nav-utils .nav-icon[aria-label="Search"] { display: none; }
+  .ev-footer-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
+  .ev-footer-grid > :first-child { grid-column: 1 / -1; }
+  .ev-footer-bottom { flex-direction: column; gap: 16px; }
+  .ev-footer .container { padding: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== ECHOVELLE Announcement Bar ===== -->
+<div class="announcement">
+  <button class="announcement-arrow announcement-arrow--prev" aria-label="Previous">&#10094;</button>
+  <div class="announcement-slider">
+    <div class="announcement-slide active">Free Shipping on All Orders (Excludes Remote &amp; Undeliverable Areas)</div>
+    <div class="announcement-slide">$15 OFF Orders Over $250</div>
+    <div class="announcement-slide">$40 OFF Orders Over $500</div>
+    <div class="announcement-slide">$90 OFF Orders Over $1000</div>
+    <div class="announcement-slide">$200 OFF Orders Over $2000</div>
+  </div>
+  <button class="announcement-arrow announcement-arrow--next" aria-label="Next">&#10095;</button>
+</div>
+
+<!-- ===== ECHOVELLE Header ===== -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="nav-utils-left">
+      <button type="button" class="nav-icon nav-hamburger" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+      <a href="#" class="nav-icon nav-search-left" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></a>
+    </div>
+    <a href="index.html" class="logo-link">
+      <img src="logo-echovelle.png" alt="ECHOVELLE" class="logo-img">
+    </a>
+    <ul class="main-nav">
+      <li>
+        <a href="#">Necklaces</a>
+        <div class="mega-menu">
+          <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+            <div>
+              <a href="#">Shop Necklaces</a>
+              <a href="#" class="mega-sidebar-plain">View All</a>
+            </div>
+            <div class="mega-sidebar-bottom">
+              <a href="#">Our Story</a>
+              <a href="#">Book a Consultation</a>
+              <a href="#">Contact Us</a>
+            </div>
+          </div>
+          <div class="mega-grid">
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0727.jpg?v=1775547658')"></div><p class="mega-item-label">Everyday Necklaces</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658')"></div><p class="mega-item-label">Gift Necklaces</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658')"></div><p class="mega-item-label">Statement Necklaces</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656')"></div><p class="mega-item-label">Elevated Necklaces</p></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Earrings</a>
+        <div class="mega-menu">
+          <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+            <div>
+              <a href="#">Shop Earrings</a>
+              <a href="#" class="mega-sidebar-plain">View All</a>
+            </div>
+            <div class="mega-sidebar-bottom">
+              <a href="#">Our Story</a>
+              <a href="#">Book a Consultation</a>
+              <a href="#">Contact Us</a>
+            </div>
+          </div>
+          <div class="mega-grid">
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/08a4bf12-7975-4101-ac4a-8d1aa3ea688f.png?v=1775547658')"></div><p class="mega-item-label">Stud Earrings</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657')"></div><p class="mega-item-label">Drop Earrings</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0730_2.jpg?v=1775547658')"></div><p class="mega-item-label">Gift Earrings</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657')"></div><p class="mega-item-label">Statement Earrings</p></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Gifts</a>
+        <div class="mega-menu">
+          <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+            <div>
+              <a href="#">Shop Gifts</a>
+              <a href="#" class="mega-sidebar-plain">Gift Cards</a>
+            </div>
+            <div class="mega-sidebar-bottom">
+              <a href="#">Our Story</a>
+              <a href="#">Book a Consultation</a>
+              <a href="#">Contact Us</a>
+            </div>
+          </div>
+          <div class="mega-grid">
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about_600x_3dbaadcc-51b8-440c-b2ed-29ef6c33f41e.png?v=1775547658')"></div><p class="mega-item-label">Gifts for Her</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/0508ins_800x_aec719ef-ec66-4e4c-8682-f4b81b2bc9fa.png?v=1775547659')"></div><p class="mega-item-label">Birthday Gifts</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Anniversary Gifts</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/simple_Angela_side_view_small_file.jpg?v=1775547657')"></div><p class="mega-item-label">Mother&rsquo;s Day Gifts</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661')"></div><p class="mega-item-label">Gift Sets</p></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Collections</a>
+        <div class="mega-menu">
+          <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+            <div>
+              <a href="#">Editorial Edits</a>
+              <a href="#" class="mega-sidebar-plain">Shop All</a>
+            </div>
+            <div class="mega-sidebar-bottom">
+              <a href="#">Our Story</a>
+              <a href="#">Book a Consultation</a>
+              <a href="#">Contact Us</a>
+            </div>
+          </div>
+          <div class="mega-grid">
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0705.jpg?v=1775547658')"></div><p class="mega-item-label">Design Edit</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Gift Edit</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/6570-ak-w3a.webp?v=1775547656')"></div><p class="mega-item-label">Elevated Edit</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0684.jpg?v=1775547658')"></div><p class="mega-item-label">New Arrivals</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/IMG_0694_2.jpg?v=1775547658')"></div><p class="mega-item-label">Best Sellers</p></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">About</a>
+        <div class="mega-menu">
+          <div class="mega-sidebar" style="display:flex;flex-direction:column;">
+            <div>
+              <a href="#">The House of Echovelle</a>
+              <a href="#" class="mega-sidebar-plain">Customer Care</a>
+            </div>
+            <div class="mega-sidebar-bottom">
+              <a href="#">Book a Consultation</a>
+              <a href="#">Contact Us</a>
+            </div>
+          </div>
+          <div class="mega-grid">
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/about_600x_3dbaadcc-51b8-440c-b2ed-29ef6c33f41e.png?v=1775547658')"></div><p class="mega-item-label">Our Story</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/DSC01434-4.jpg?v=1775547657')"></div><p class="mega-item-label">Pearl Care</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/bg-image-rings.png?v=1775547658')"></div><p class="mega-item-label">Warranty</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/1_1200x_14ae4146-6138-46a5-9c80-f4e2a54aa558.png?v=1775547661')"></div><p class="mega-item-label">FAQ</p></div>
+            <div class="mega-item"><div class="mega-item-img" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Untitled_design.jpg?v=1775547656')"></div><p class="mega-item-label">Contact Us</p></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-utils">
+      <a href="#" class="nav-icon" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></a>
+      <a href="#" class="nav-icon" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></a>
+      <a href="#" class="nav-icon" aria-label="Bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== RL Creative Content (ECHOVELLE text/images) ===== -->
+<div id="rl-content">
+<section class="rlc-creative_v3 rlc-1440_375 rlc-redesign-fy25" id="rlc-create-timeless-style-content-20250924">
+
+    <!-- HERO -->
+    <section id="rlc-hero" class="rlc-fullbleed rlc-hero rlc-block rlc-usebrandstyles">
+        <div class="rlc-imagery">
+            <picture class="rlc-picture">
+                <source class="rlc-image-src-desktop" media="(min-width: 768px)"
+                    srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/20260415165247_439_5.png?v=1776245410" />
+                <source class="rlc-image-src-mobile" media="(max-width: 767px)"
+                    srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/20260415165247_439_5.png?v=1776245410" />
+                <img class="rlc-image rlc-image--primary" fetchpriority="high">
+            </picture>
+        </div>
+        <div class="rlc-copygroup rlc-desktop-pos-center-left rlc-mobile-pos-center-left rlc-mobile-width-100 rlc-all-text-left rlc-custom--breadcrumb rlc-custom--title rlc-all-color-light">
+            <div class="plp-info light">
+                <div class="plp-info-breadcrumb">
+                    <div class="plp-info-breadcrumb-path">
+                        <a href="#" class="breadcrumb-element rlc-bc-division">OUR COMMITMENT /</a>
+                    </div>
+                </div>
+            </div>
+            <h1 class="rlc-title rlc-h1">Crafted with Purpose</h1>
+        </div>
+    </section>
+
+
+    <style>
+        .rlc-bg.rlc-wasviewed {
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        @media only screen and (min-width:768px) {
+            #rlc-section_main.rlc-bg.rlc-wasviewed {
+                background-image: url(https://cdn.shopify.com/s/files/1/0577/1939/0270/files/mexico-yucatan-sea-waves-on-beach-sand-tetra-images.jpg?v=1776334871);
+            }
+            #rlc-section_studies.rlc-bg.rlc-wasviewed {
+                background-image: url(https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/dw411adb71/img/202509/citizenship/create/CWIT-Background-2.jpg);
+            }
+        }
+        @media only screen and (max-width:767px) {
+            #rlc-section_main.rlc-bg.rlc-wasviewed {
+                background-image: url(https://cdn.shopify.com/s/files/1/0577/1939/0270/files/mexico-yucatan-sea-waves-on-beach-sand-tetra-images.jpg?v=1776334871);
+            }
+            #rlc-section_studies.rlc-bg.rlc-wasviewed {
+                background-image: url(https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/dwd3f1adfe/img/202509/citizenship/create/MOBILE_CWIT-BKG-2.jpg);
+            }
+        }
+    </style>
+
+    <!-- STUDIES SECTION -->
+    <section id="rlc-section_studies" class="rlc-fullbleed rlc-block rlc-bg rlc-desktop-padding">
+        <div class="rlc-wrapper--inner rlc-desktop-padding-none">
+
+            <!-- Heirloom Statement (scroll-fill animation) -->
+            <section class="ev-art-series">
+              <div class="ev-art-series-intro">
+                <h2 class="ev-art-series-headline">
+                  <span class="ev-art-series-line">Where Heirloom Meets Heart — A Quiet Celebration Of Timeless Pearls, Hand-Selected From Japan's Finest Waters, Set In Solid Gold, Knotted On Silk, Made To Be Worn Often And Treasured For Generations Hence. Each Piece Carries The Patience Of The Sea, The Precision Of The Artisan's Hand, And A Promise That True Beauty Only Deepens With Time.</span>
+                </h2>
+              </div>
+            </section>
+        </div>
+
+        <!-- ESTATE GALLERY (marquee) -->
+        <section class="ev-estate-gallery">
+          <div class="ev-gallery-marquee">
+            <div class="ev-gallery-track">
+              <!-- Set A -->
+              <div class="eg-item"><div class="eg-img eg-img-s"><img src="temp_images/5_IMG_0730.jpg" alt="Pearls on silk" /></div><div class="eg-caption"><p>Each strand begins with a single pearl, chosen for its quiet perfection.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-l"><img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&q=80" alt="Pearl farm" /></div><div class="eg-caption"><p>Our pearls travel from pristine waters to the hands of artisans who honor each one's unique character.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-s"><img src="https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=600&q=80" alt="Jewelry detail" /></div><div class="eg-caption"><p>Solid gold, hand-set — details you feel before you see.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-l"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/sea-sunset-2026-03-25-23-28-26-utc_1.jpg?v=1776653367" alt="Coastal waters" /></div><div class="eg-caption"><p>Born of the sea, shaped by patience — every pearl carries the memory of the tide.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-l"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/crafts-thread-dressmaking-scissors-monochrome-butt-2026-01-11-10-04-19-utc_1.jpg?v=1776665834" alt="Pearl ring" /></div><div class="eg-caption"><p>We believe in the pearl as nature's most perfect act of quiet resistance — beauty born from patience.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-s"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Orchid02_shooting.webp?v=1776246235" alt="Silk and pearls" /></div><div class="eg-caption"><p>The atelier at golden hour, where light meets luster.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-l"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/accessories-for-the-bride-earrings-on-the-veil-w-2026-03-24-15-42-08-utc_1.jpg?v=1776665835" alt="Ocean vista" /></div><div class="eg-caption"><p>The waters that give us our pearls deserve our deepest respect.</p></div></div>
+              <!-- Set B (duplicate for seamless loop) -->
+              <div class="eg-item"><div class="eg-img eg-img-s"><img src="temp_images/5_IMG_0730.jpg" alt="Pearls on silk" /></div><div class="eg-caption"><p>Each strand begins with a single pearl, chosen for its quiet perfection.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-l"><img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&q=80" alt="Pearl farm" /></div><div class="eg-caption"><p>Our pearls travel from pristine waters to the hands of artisans who honor each one's unique character.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-s"><img src="https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=600&q=80" alt="Jewelry detail" /></div><div class="eg-caption"><p>Solid gold, hand-set — details you feel before you see.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-l"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/sea-sunset-2026-03-25-23-28-26-utc_1.jpg?v=1776653367" alt="Coastal waters" /></div><div class="eg-caption"><p>Born of the sea, shaped by patience — every pearl carries the memory of the tide.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-l"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/crafts-thread-dressmaking-scissors-monochrome-butt-2026-01-11-10-04-19-utc_1.jpg?v=1776665834" alt="Pearl ring" /></div><div class="eg-caption"><p>We believe in the pearl as nature's most perfect act of quiet resistance — beauty born from patience.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-s"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Orchid02_shooting.webp?v=1776246235" alt="Silk and pearls" /></div><div class="eg-caption"><p>The atelier at golden hour, where light meets luster.</p></div></div>
+              <div class="eg-item"><div class="eg-img eg-img-l"><img src="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/accessories-for-the-bride-earrings-on-the-veil-w-2026-03-24-15-42-08-utc_1.jpg?v=1776665835" alt="Ocean vista" /></div><div class="eg-caption"><p>The waters that give us our pearls deserve our deepest respect.</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="rlc-wrapper--inner rlc-all-padding-none">
+
+            <!-- CASE STUDY 2: The Artisan's Hand -->
+            <article class="rlc-study rlc-fullbleed rlc-margin--top" id="rlc-study_2">
+                <section class="rlc-carousel rlc-banner rlc-block rlc-carousel-nointeraction rlc-carousel_pagination-inside rlc-all-color-light" pagination="all">
+                    <div class="rlc-carousel_wrapper swiper-container">
+                        <div class="swiper-wrapper">
+
+                            <!-- Slide 2 -->
+                            <section class="rlc-slide rlc-image--left rlc-block swiper-slide rlc-desktop-color-dark rlc-mobile-color-light">
+                                <div class="rlc-imagery">
+                                    <picture class="rlc-picture">
+                                        <source class="rlc-image-src-desktop" media="(min-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Frame_1_1.webp?v=1776655361">
+                                        <source class="rlc-image-src-mobile" media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Frame_3.webp?v=1776713829">
+                                        <img class="rlc-image rlc-image--primary" loading="lazy">
+                                    </picture>
+                                </div>
+                                <div class="rlc-all-foreground rlc-all-flex-center">
+                                    <div class="rlc-copygroup rlc-all-text-left rlc-all-flex-center">
+                                        <p class="rlc-dek rlc-p">
+                                            Echovelle's craft tradition is rooted in the belief that the human hand is irreplaceable. Each piece passes through the hands of at least three master artisans — a grader who selects the pearl, a stringer who knots each strand on silk, and a setter who finishes every clasp and finding in solid 18K gold. This process cannot be rushed; a single necklace may take six hours to&nbsp;complete.
+                                        </p>
+                                        <br/>
+                                        <p class="rlc-dek rlc-p" style="align-self: stretch; width: 100%;">
+                                            We honor this tradition through our Atelier Residency and Master Artisan&nbsp;programs.
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Slide 6: Apply -->
+                            <section class="rlc-slide rlc-image--right rlc-block swiper-slide rlc-desktop-color-dark rlc-mobile-color-light">
+                                <div class="rlc-imagery">
+                                    <picture class="rlc-picture">
+                                        <source class="rlc-image-src-desktop" media="(min-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Frame_2.webp?v=1776655361">
+                                        <source class="rlc-image-src-mobile" media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/Frame_4_1.webp?v=1776713829">
+                                        <img class="rlc-image rlc-image--primary" loading="lazy">
+                                    </picture>
+                                </div>
+                                <div class="rlc-all-foreground rlc-all-flex-center">
+                                    <div class="rlc-copygroup rlc-all-flex-center">
+                                        <p class="rlc-dek rlc-p rlc-all-text-left">
+                                            Our Atelier Residency invites emerging and established artisans to spend six months in our workshop alongside our master graders, stringers and setters. The Master Artisan program is a three-year apprenticeship pairing each with a senior hand, passing down the quiet rituals of pearl-knotting, clasp-finishing and silk-threading that define the Echovelle house. Applications are reviewed on a rolling basis; we welcome candidates in jewelry, metalsmithing, textile arts, and related fields committed to slow, considered craft.
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div><!-- close rlc-wrapper--inner -->
+
+            <!-- VIDEO BANNER -->
+            <section class="ev-video-banner">
+              <div class="ev-video-banner-intro">
+                <h2 class="ev-video-banner-text">True Beauty, Never Forced.</h2>
+              </div>
+              <div class="ev-video-banner-media">
+                <video id="ev-hero-video" aria-hidden="true" tabindex="-1" playsinline autoplay loop muted
+                       poster="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/pre-video-desktop.jpg?v=1775547656">
+                  <source src="https://cdn.shopify.com/videos/c/o/v/bb328fbbd97947cba66d3907d2d3d106.mp4" type="video/mp4"/>
+                </video>
+              </div>
+              <div class="ev-video-controls">
+                <button class="ev-ctrl-btn" id="ev-fullscreen" aria-label="Fullscreen">
+                  <svg viewBox="0 0 24 24"><path d="M14.016 5.016h4.969v4.969h-1.969v-3h-3v-1.969zM17.016 17.016v-3h1.969v4.969h-4.969v-1.969h3zM5.016 9.984v-4.969h4.969v1.969h-3v3h-1.969zM6.984 14.016v3h3v1.969h-4.969v-4.969h1.969z"/></svg>
+                </button>
+                <button class="ev-ctrl-btn" id="ev-playpause" aria-label="Play/Pause">
+                  <svg class="icon-pause" viewBox="0 0 24 24"><path d="M14.824 5.676h0.706c0.776 0 1.412 0.635 1.412 1.412v9.882c0 0.776-0.635 1.412-1.412 1.412h-0.706c-0.776 0-1.412-0.635-1.412-1.412v-9.882c0-0.776 0.635-1.412 1.412-1.412z"/><path d="M8.471 5.676h0.706c0.776 0 1.412 0.635 1.412 1.412v9.882c0 0.776-0.635 1.412-1.412 1.412h-0.706c-0.776 0-1.412-0.635-1.412-1.412v-9.882c0-0.776 0.635-1.412 1.412-1.412z"/></svg>
+                  <svg class="icon-play icon-hidden" viewBox="0 0 24 24"><path d="M17.647 10.8c0.706 0.424 0.918 1.271 0.494 1.906-0.141 0.212-0.282 0.353-0.494 0.494l-8.471 4.941c-0.706 0.424-1.553 0.141-1.906-0.494-0.141-0.212-0.212-0.494-0.212-0.706v-9.882c0-0.776 0.635-1.412 1.412-1.412 0.282 0 0.494 0.071 0.706 0.212l8.471 4.941z"/></svg>
+                </button>
+                <button class="ev-ctrl-btn" id="ev-mute" aria-label="Mute/Unmute">
+                  <svg class="icon-muted" viewBox="0 0 24 24"><path d="M17.224 12.212c0-0.988-0.282-2.047-0.847-2.894s-1.341-1.553-2.259-1.906c-0.141-0.071-0.282-0.141-0.353-0.282s-0.071-0.282 0-0.424c0.071-0.141 0.141-0.282 0.353-0.353 0.141-0.071 0.353-0.071 0.494 0 1.129 0.494 2.047 1.341 2.753 2.329 0.706 1.059 1.059 2.259 1.059 3.459 0 1.271-0.353 2.471-1.059 3.459-0.706 1.059-1.624 1.835-2.753 2.329-0.141 0.071-0.353 0.071-0.494 0s-0.282-0.141-0.353-0.353c-0.071-0.141-0.071-0.282 0-0.424s0.212-0.282 0.353-0.282c0.918-0.424 1.694-1.059 2.259-1.906 0.565-0.706 0.847-1.694 0.847-2.753zM8.471 14.188h-2.118c-0.212 0-0.353-0.071-0.494-0.212s-0.212-0.282-0.212-0.494v-2.4c0-0.212 0.071-0.353 0.212-0.494s0.282-0.212 0.494-0.212h2.118l2.259-2.259c0.141-0.212 0.424-0.212 0.635-0.141s0.353 0.282 0.353 0.565v7.553c0 0.212-0.141 0.424-0.353 0.565-0.212 0.071-0.494 0.071-0.635-0.141l-2.259-2.329zM15.176 12.282c0 0.494-0.071 0.918-0.282 1.341s-0.424 0.776-0.776 1.059c-0.071 0.071-0.212 0.071-0.353 0s-0.212-0.141-0.212-0.282v-4.376c0-0.141 0.071-0.212 0.212-0.282s0.212-0.071 0.353 0c0.353 0.282 0.635 0.706 0.776 1.129 0.141 0.494 0.282 0.918 0.282 1.412v0z"/></svg>
+                  <svg class="icon-unmuted icon-hidden" viewBox="0 0 24 24"><path d="M6.071 6.353c-0.282 0.282-0.282 0.706 0 0.988l2.612 2.612-0.212 0.141h-2.118c-0.424 0-0.706 0.282-0.706 0.706v2.824c0 0.424 0.282 0.706 0.706 0.706h2.118l2.329 2.329c0.282 0.282 0.706 0.282 0.988 0 0.141-0.141 0.212-0.282 0.212-0.494v-2.965l2.965 2.965c-0.353 0.282-0.706 0.494-1.129 0.635-0.353 0.141-0.494 0.565-0.353 0.918s0.565 0.494 0.918 0.353c0.565-0.212 1.059-0.565 1.553-0.918l0.918 0.918c0.282 0.282 0.776 0.212 0.988-0.071s0.212-0.635 0-0.918l-10.729-10.729c-0.282-0.282-0.776-0.282-1.059 0zM16.941 12.212c0 0.565-0.071 1.129-0.282 1.624l1.059 1.059c1.482-3.176 0.141-6.918-2.965-8.471-0.141-0.071-0.282-0.141-0.494-0.212-0.353-0.141-0.706 0.071-0.847 0.353 0 0.212 0 0.282 0 0.353v0.141c0 0.282 0.212 0.494 0.424 0.635 1.906 0.706 3.106 2.541 3.106 4.518zM10.8 7.835l-0.141 0.141 1.341 1.341v-0.988c0-0.424-0.353-0.706-0.706-0.706-0.212 0-0.353 0.071-0.494 0.212zM15.176 12.212c0-1.2-0.706-2.329-1.765-2.824v1.271l1.765 1.765c0-0.071 0-0.141 0-0.212z"/></svg>
+                </button>
+              </div>
+            </section>
+
+        <!-- ===== PILLARS ===== -->
+        <section class="ev-brand-section ev-brand-section--cream">
+          <div class="ev-container" style="text-align:center;">
+            <p class="ev-brand-eyebrow">Three Principles</p>
+            <h2 class="ev-brand-title" style="margin-left:auto;margin-right:auto;">A House, Built in Three Acts.</h2>
+            <p class="ev-brand-sub" style="margin-left:auto;margin-right:auto;">Every decision we make begins and ends with these three commitments — to the pearl, to the hand, to the sea.</p>
+            <div class="ev-pillars">
+              <div class="ev-pillar">
+                <p class="ev-pillar-num">No. 01</p>
+                <div class="ev-pillar-divider"></div>
+                <h3 class="ev-pillar-title">Provenance</h3>
+                <p class="ev-pillar-body">Every pearl is traceable to a certified farm. We visit our partners in Japan each harvest — and only the top one percent comes home with us.</p>
+              </div>
+              <div class="ev-pillar">
+                <p class="ev-pillar-num">No. 02</p>
+                <div class="ev-pillar-divider"></div>
+                <h3 class="ev-pillar-title">Craft</h3>
+                <p class="ev-pillar-body">Hand-knotted silk thread. Solid 18K gold clasps. Six hours of finishing per strand. Our master stringers work the same traditional Japanese method that has defined the craft for a century.</p>
+              </div>
+              <div class="ev-pillar">
+                <p class="ev-pillar-num">No. 03</p>
+                <div class="ev-pillar-divider"></div>
+                <h3 class="ev-pillar-title">Conscience</h3>
+                <p class="ev-pillar-body">We don't just take from the ocean — we give back. A portion of every purchase funds clean-ocean initiatives, and we partner exclusively with farmers committed to protecting marine ecosystems.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== CURATED EDITS CAROUSEL ===== -->
+        <section class="ev-edits">
+          <div class="ev-edits-bg">
+            <div class="ev-edits-bg-slide active" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/playa-los-angeles-at-dawn-beach-with-a-leaning-palm-tree-and-rocks-in-the-sea-ISF24257.jpg?v=1776344666')"></div>
+            <div class="ev-edits-bg-slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/d292fc20aa9542469144469b37f5ecac_tplv-tb4s082cfz-aigc_resize_2400_2400.jpg?v=1776344665')"></div>
+            <div class="ev-edits-bg-slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0577/1939/0270/files/pexels-zacharie-elbaz-1911751498-29115910.jpg?v=1776344829')"></div>
+          </div>
+          <div class="ev-edits-stage">
+            <div class="ev-edits-slide active">
+              <div class="ev-edits-panel">
+                <h3 class="ev-edits-panel-title">The Heirloom Edit</h3>
+                <p class="ev-edits-panel-desc">Strands designed to be passed down — hand-knotted on silk, finished in solid 18K gold, made to outlive a lifetime.</p>
+                <div class="ev-edits-panel-ctas">
+                  <a href="#" class="ev-edits-btn ev-edits-btn--light">Shop Necklaces</a>
+                  <a href="#" class="ev-edits-btn ev-edits-btn--ghost">Our Story</a>
+                </div>
+                <div class="ev-edits-nav">
+                  <button class="ev-edits-nav-btn ev-edits-nav-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg></button>
+                  <button class="ev-edits-nav-btn ev-edits-nav-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18l6-6-6-6"/></svg></button>
+                </div>
+                <div class="ev-edits-progress"><div class="ev-edits-progress-bar"></div></div>
+              </div>
+              <a href="product.html" class="ev-edits-product">
+                <div class="ev-edits-product-img"><img src="pearls产品图/1.webp" alt="Akoya Classic Strand"></div>
+                <p class="ev-edits-product-name">Akoya Classic Strand</p>
+                <p class="ev-edits-product-price">$1,280</p>
+              </a>
+            </div>
+            <div class="ev-edits-slide">
+              <div class="ev-edits-panel">
+                <h3 class="ev-edits-panel-title">Everyday Luminescence</h3>
+                <p class="ev-edits-panel-desc">Pearls for the morning coffee, the Tuesday lunch, the unremarkable beautiful day. Quiet luxury, lived in.</p>
+                <div class="ev-edits-panel-ctas">
+                  <a href="#" class="ev-edits-btn ev-edits-btn--light">Shop Edit</a>
+                  <a href="#" class="ev-edits-btn ev-edits-btn--ghost">Discover</a>
+                </div>
+                <div class="ev-edits-nav">
+                  <button class="ev-edits-nav-btn ev-edits-nav-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg></button>
+                  <button class="ev-edits-nav-btn ev-edits-nav-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18l6-6-6-6"/></svg></button>
+                </div>
+                <div class="ev-edits-progress"><div class="ev-edits-progress-bar"></div></div>
+              </div>
+              <a href="product.html" class="ev-edits-product">
+                <div class="ev-edits-product-img"><img src="模特图/Necklaces3模特.webp" alt="Layered Pearl Necklace"></div>
+                <p class="ev-edits-product-name">Layered Pearl Necklace</p>
+                <p class="ev-edits-product-price">$620</p>
+              </a>
+            </div>
+            <div class="ev-edits-slide">
+              <div class="ev-edits-panel">
+                <h3 class="ev-edits-panel-title">The Founder's Selection</h3>
+                <p class="ev-edits-panel-desc">A curated handful from each harvest — Mireille's personal favorites, available only by private appointment.</p>
+                <div class="ev-edits-panel-ctas">
+                  <a href="#" class="ev-edits-btn ev-edits-btn--light">Book Consultation</a>
+                  <a href="#" class="ev-edits-btn ev-edits-btn--ghost">Inside The Atelier</a>
+                </div>
+                <div class="ev-edits-nav">
+                  <button class="ev-edits-nav-btn ev-edits-nav-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg></button>
+                  <button class="ev-edits-nav-btn ev-edits-nav-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18l6-6-6-6"/></svg></button>
+                </div>
+                <div class="ev-edits-progress"><div class="ev-edits-progress-bar"></div></div>
+              </div>
+              <a href="product.html" class="ev-edits-product">
+                <div class="ev-edits-product-img"><img src="模特图/Bracelets1模特.webp" alt="South Sea Bracelet"></div>
+                <p class="ev-edits-product-name">South Sea Bracelet</p>
+                <p class="ev-edits-product-price">$1,680</p>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== FOUNDER ===== -->
+        <section class="ev-brand-section" id="ev-founder">
+          <div class="ev-container">
+            <div class="ev-founder">
+              <div class="ev-founder-img">
+                <img src="queer-person-in-black-corset-and-pearl-necklace-po-2026-03-11-03-26-13-utc.jpg" alt="Echovelle founder portrait">
+              </div>
+              <div class="ev-founder-text">
+                <p class="ev-brand-eyebrow">A Letter From Our Founder</p>
+                <p class="ev-founder-quote">I wanted a pearl necklace that felt as considered as my mother's — at a price that felt honest.</p>
+                <div class="ev-founder-body">
+                  <p>Echovelle began with a simple frustration. After years working in luxury retail, I watched women pay four figures for pearl strands that I knew, intimately, cost a fraction to make. The markups weren't for craftsmanship — they were for brand tax.</p>
+                  <p>So we took a different path. We went directly to the farms that supply the biggest names in the business. We found the master stringers who spend their weekends teaching their grandchildren how to tie a silk knot without pulling a pearl off-center. And we built a house where the pearl — not the price tag — does the talking.</p>
+                  <p>This is the brand I wanted when I was twenty-five, and the one I hope my daughter inherits when she's fifty. Welcome home.</p>
+                </div>
+                <p class="ev-founder-signature">
+                  Mireille Renaud
+                  <span class="ev-founder-signature-role">Founder &amp; Creative Director</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="rlc-wrapper--inner rlc-all-padding-none">
+            <!-- REPORT BOX -->
+            <section id="rlc-section_report-box--large" class="rlc-fullbleed rlc-block rlc-mobile-hidden">
+                <div class="rlc-textgroup rlc-noflex rlc-nobg rlc-all-text-center">
+                    <h2 class="rlc-h2 rlc-title rlc-font--lejeune">
+                        Read Our 2025 Sustainability &amp; Craftsmanship Report
+                    </h2>
+                    <div class="rlc-container-cta rlc-usebrandstyles">
+                        <a class="rlc-a rlc-cta rlc-link" href="#" target="_self" download>
+                            DOWNLOAD
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPLORE MORE -->
+            <section id="rlc-explore_more-20250924" class="rlc-fullbleed rlc-block rlc-all-color-dark">
+                <div class="rlc-copygroup rlc-all-pos-above rlc-all-text-left">
+                    <h2 class="rlc-title rlc-h2 rlc-all-text-left rlc-font--lejeune">Explore More</h2>
+                </div>
+                <div class="rlc-carousel rlc-desktop-peek rlc-block rlc-category_carousel rlc-all-color-light" scrollbar="all">
+                    <div class="rlc-carousel_wrapper swiper-container">
+                        <div class="swiper-wrapper">
+
+                            <div class="rlc-slide rlc-slide1 rlc-block swiper-slide rlc-all-color-dark">
+                                <a href="#" aria-hidden="true" role="presentation" tabindex="-1">
+                                    <div class="rlc-imagery">
+                                        <picture class="rlc-picture">
+                                            <source class="rlc-image-src-desktop" media="(min-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/queer-person-in-black-corset-and-pearl-necklace-po-2026-03-11-03-26-13-utc.jpg?v=1776346350">
+                                            <source class="rlc-image-src-mobile" media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/queer-person-in-black-corset-and-pearl-necklace-po-2026-03-11-03-26-13-utc.jpg?v=1776346350">
+                                            <img class="rlc-image rlc-image--primary" loading="lazy">
+                                        </picture>
+                                    </div>
+                                </a>
+                                <div class="rlc-copygroup rlc-all-pos-bottom">
+                                    <a href="#" class="rlc-title rlc-h2 rlc-font--lejeune">Our Collections</a>
+                                </div>
+                            </div>
+
+                            <div class="rlc-slide rlc-slide2 rlc-block swiper-slide rlc-all-color-dark">
+                                <a href="#" aria-hidden="true" role="presentation" tabindex="-1">
+                                    <div class="rlc-imagery">
+                                        <picture class="rlc-picture">
+                                            <source class="rlc-image-src-desktop" media="(min-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/fashion-portrait-of-an-elegant-young-woman-2026-03-26-06-52-26-utc_1.jpg?v=1776652034">
+                                            <source class="rlc-image-src-mobile" media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/fashion-portrait-of-an-elegant-young-woman-2026-03-26-06-52-26-utc_1.jpg?v=1776652034">
+                                            <img class="rlc-image rlc-image--primary" loading="lazy">
+                                        </picture>
+                                    </div>
+                                </a>
+                                <div class="rlc-copygroup rlc-all-pos-bottom">
+                                    <a href="#" class="rlc-title rlc-h2 rlc-font--lejeune">The Atelier</a>
+                                </div>
+                            </div>
+
+                            <div class="rlc-slide rlc-slide3 rlc-block swiper-slide rlc-all-color-dark">
+                                <a href="#" aria-hidden="true" role="presentation" tabindex="-1">
+                                    <div class="rlc-imagery">
+                                        <picture class="rlc-picture">
+                                            <source class="rlc-image-src-desktop" media="(min-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/hands-of-pregnancy-and-generation-2026-03-09-08-16-08-utc_1.jpg?v=1776652034">
+                                            <source class="rlc-image-src-mobile" media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/hands-of-pregnancy-and-generation-2026-03-09-08-16-08-utc_1.jpg?v=1776652034">
+                                            <img class="rlc-image rlc-image--primary" loading="lazy">
+                                        </picture>
+                                    </div>
+                                </a>
+                                <div class="rlc-copygroup rlc-all-pos-bottom">
+                                    <a href="#" class="rlc-title rlc-h2 rlc-font--lejeune">Pearl Care Guide</a>
+                                </div>
+                            </div>
+
+                            <div class="rlc-slide rlc-slide4 rlc-block swiper-slide rlc-all-color-dark">
+                                <a href="#" aria-hidden="true" role="presentation" tabindex="-1">
+                                    <div class="rlc-imagery">
+                                        <picture class="rlc-picture">
+                                            <source class="rlc-image-src-desktop" media="(min-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/portrait-of-a-young-girl-with-a-necklace-on-a-blac-2026-03-25-23-52-19-utc_1.jpg?v=1776652034">
+                                            <source class="rlc-image-src-mobile" media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/portrait-of-a-young-girl-with-a-necklace-on-a-blac-2026-03-25-23-52-19-utc_1.jpg?v=1776652034">
+                                            <img class="rlc-image rlc-image--primary" loading="lazy">
+                                        </picture>
+                                    </div>
+                                </a>
+                                <div class="rlc-copygroup rlc-all-pos-bottom">
+                                    <a href="#" class="rlc-title rlc-h2 rlc-font--lejeune">Gift Sets</a>
+                                </div>
+                            </div>
+
+                            <div class="rlc-slide rlc-slide5 rlc-block swiper-slide rlc-all-color-dark">
+                                <a href="#" aria-hidden="true" role="presentation" tabindex="-1">
+                                    <div class="rlc-imagery">
+                                        <picture class="rlc-picture">
+                                            <source class="rlc-image-src-desktop" media="(min-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/a-skilled-artisan-meticulously-crafts-intricate-je-2026-01-09-11-37-13-utc_1.jpg?v=1776652034">
+                                            <source class="rlc-image-src-mobile" media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/a-skilled-artisan-meticulously-crafts-intricate-je-2026-01-09-11-37-13-utc_1.jpg?v=1776652034">
+                                            <img class="rlc-image rlc-image--primary" loading="lazy">
+                                        </picture>
+                                    </div>
+                                </a>
+                                <div class="rlc-copygroup rlc-all-pos-bottom">
+                                    <a href="#" class="rlc-title rlc-h2 rlc-font--lejeune">Our Artisans</a>
+                                </div>
+                            </div>
+
+                            <div class="rlc-slide rlc-slide6 rlc-block swiper-slide rlc-all-color-dark">
+                                <a href="#" aria-hidden="true" role="presentation" tabindex="-1">
+                                    <div class="rlc-imagery">
+                                        <picture class="rlc-picture">
+                                            <source class="rlc-image-src-desktop" media="(min-width: 768px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/pexels-zacharie-elbaz-1911751498-29115910.jpg?v=1776344829">
+                                            <source class="rlc-image-src-mobile" media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/0577/1939/0270/files/pexels-zacharie-elbaz-1911751498-29115910.jpg?v=1776344829">
+                                            <img class="rlc-image rlc-image--primary" loading="lazy">
+                                        </picture>
+                                    </div>
+                                </a>
+                                <div class="rlc-copygroup rlc-all-pos-bottom">
+                                    <a href="#" class="rlc-title rlc-h2 rlc-font--lejeune">Sustainability</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+</section>
+
+<!-- RL dynamic JS loaders -->
+<div id="rlc-creativejs" class="rlc-all-hidden" data-customjs="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/_common/js/rlc-creative.1.2.8.2.min.js"></div>
+<div id="rlc-csjs" class="rlc-all-hidden" data-customjs="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/img/202509/citizenship/cs_202509.js"></div>
+
+</div>
+<!-- /rl-content -->
+
+<!-- ===== ECHOVELLE Footer ===== -->
+<footer class="ev-footer">
+  <div class="container">
+    <div class="ev-footer-grid">
+      <div>
+        <img src="logo-echovelle.png" alt="ECHOVELLE" class="ev-footer-logo">
+        <p class="ev-footer-brand-text">True Beauty, Never Forced. Handpicked pearls, ethically sourced from the world's finest waters, crafted into timeless jewelry.</p>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Necklaces</a></li>
+          <li><a href="#">Earrings</a></li>
+          <li><a href="#">Rings</a></li>
+          <li><a href="#">Bracelets</a></li>
+          <li><a href="#">Gift Sets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Our Story</h5>
+        <ul>
+          <li><a href="#">About Echovelle</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Pearl Guide</a></li>
+          <li><a href="#">Our Symbolism</a></li>
+          <li><a href="#">Journal</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Customer Service</h5>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns &amp; Repairs</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Policies</h5>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ev-footer-bottom">
+      <p>&copy; 2026 Echovelle. All rights reserved.</p>
+      <div class="ev-footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M11 8c-1.5 0-3 1-3 3 0 1.2.5 2 1 2"/><path d="M13 7.5c2 0 4 1.2 4 3.8 0 2.5-1.6 4.5-3.8 4.5-1 0-1.8-.5-2.1-1.2"/><path d="M11.2 15l-1.5 6"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 3h-3a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.5 2.5 4.5 5 5"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== ECHOVELLE JS ===== -->
+<script>
+// Announcement bar slider
+(function() {
+  var slides = document.querySelectorAll('.announcement-slide');
+  var prevBtn = document.querySelector('.announcement-arrow--prev');
+  var nextBtn = document.querySelector('.announcement-arrow--next');
+  var current = 0, timer;
+  function goTo(next) {
+    slides[current].classList.remove('active');
+    slides[current].classList.add('exit-up');
+    var prev = current;
+    setTimeout(function() { slides[prev].classList.remove('exit-up'); }, 500);
+    current = (next + slides.length) % slides.length;
+    slides[current].classList.add('active');
+  }
+  function startAuto() { clearInterval(timer); timer = setInterval(function() { goTo(current + 1); }, 3500); }
+  if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); startAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); startAuto(); });
+  startAuto();
+})();
+
+// Header: scroll behavior (mirrors index.html)
+(function() {
+  var header = document.getElementById('header');
+  var announcement = document.querySelector('.announcement');
+  var lastY = 0;
+  function update() {
+    var y = window.scrollY;
+    var annH = announcement ? announcement.offsetHeight : 0;
+    header.style.top = y <= annH ? (annH - y) + 'px' : '0px';
+    header.classList.toggle('scrolled', y > 100);
+    if (y > lastY && y > 200) header.classList.add('header-hidden');
+    else header.classList.remove('header-hidden');
+    lastY = y;
+  }
+  window.addEventListener('scroll', update);
+  update();
+  document.querySelectorAll('.main-nav > li').forEach(function(li) {
+    if (li.querySelector('.mega-menu')) {
+      li.addEventListener('mouseenter', function() { header.classList.add('mega-open'); });
+      li.addEventListener('mouseleave', function() { header.classList.remove('mega-open'); });
+    }
+  });
+})();
+</script>
+
+<!-- ===== RL JS (Swiper + rlc_app.js) ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.6/swiper-bundle.min.js"></script>
+<script id="rlc-app_js"
+    data-library="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/"
+    data-asset_path="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/"
+    src="https://corporate.ralphlauren.com/on/demandware.static/-/Sites-RalphLauren_Corporate-Library/default/v1776592638045/_common/js/rlc/3.2/rlc_app.js"
+    async="async"></script>
+<script>
+// ===== VIDEO BANNER CONTROLS =====
+(function() {
+  var video = document.getElementById('ev-hero-video');
+  var playBtn = document.getElementById('ev-playpause');
+  var muteBtn = document.getElementById('ev-mute');
+  var fsBtn = document.getElementById('ev-fullscreen');
+  if (!video || !playBtn) return;
+  playBtn.addEventListener('click', function() {
+    if (video.paused) {
+      video.play();
+      playBtn.querySelector('.icon-pause').classList.remove('icon-hidden');
+      playBtn.querySelector('.icon-play').classList.add('icon-hidden');
+    } else {
+      video.pause();
+      playBtn.querySelector('.icon-pause').classList.add('icon-hidden');
+      playBtn.querySelector('.icon-play').classList.remove('icon-hidden');
+    }
+  });
+  muteBtn.addEventListener('click', function() {
+    video.muted = !video.muted;
+    muteBtn.querySelector('.icon-muted').classList.toggle('icon-hidden');
+    muteBtn.querySelector('.icon-unmuted').classList.toggle('icon-hidden');
+  });
+  fsBtn.addEventListener('click', function() {
+    if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+  });
+})();
+
+// ===== HEIRLOOM STATEMENT SCROLL-FILL =====
+(function() {
+  var section = document.querySelector('.ev-art-series');
+  var headline = section ? section.querySelector('.ev-art-series-headline') : null;
+  if (!section || !headline) return;
+  var lines = headline.querySelectorAll('.ev-art-series-line');
+  lines.forEach(function(line) {
+    var tokens = line.textContent.split(/(\s+)/);
+    line.textContent = '';
+    tokens.forEach(function(tok) {
+      if (tok.length === 0) return;
+      if (/^\s+$/.test(tok)) { line.appendChild(document.createTextNode(tok)); }
+      else {
+        var span = document.createElement('span');
+        span.className = 'ev-art-word';
+        span.textContent = tok;
+        line.appendChild(span);
+      }
+    });
+  });
+  var words = headline.querySelectorAll('.ev-art-word');
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function updateColor() {
+    var rect = headline.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var center = rect.top + rect.height / 2;
+    var progress = clamp(1 - (center / vh));
+    var n = words.length;
+    words.forEach(function(w, i) {
+      var segStart = i / n;
+      var segEnd = (i + 1) / n;
+      var fill;
+      if (progress <= segStart) fill = 0;
+      else if (progress >= segEnd) fill = 1;
+      else fill = (progress - segStart) / (segEnd - segStart);
+      w.style.setProperty('--fill', (fill * 100) + '%');
+    });
+  }
+  window.addEventListener('scroll', updateColor, { passive: true });
+  window.addEventListener('resize', updateColor);
+  updateColor();
+})();
+
+// ===== CURATED EDITS CAROUSEL =====
+(function() {
+  var bgs = document.querySelectorAll('.ev-edits-bg-slide');
+  var slides = document.querySelectorAll('.ev-edits-slide');
+  var prevBtns = document.querySelectorAll('.ev-edits-nav-prev');
+  var nextBtns = document.querySelectorAll('.ev-edits-nav-next');
+  if (!slides.length) return;
+
+  // Mobile: move nav out of panel so arrows sit below the product card
+  var navMQ = window.matchMedia('(max-width: 768px)');
+  function placeNavs() {
+    slides.forEach(function(slide) {
+      var nav = slide.querySelector('.ev-edits-nav');
+      var panel = slide.querySelector('.ev-edits-panel');
+      if (!nav || !panel) return;
+      if (navMQ.matches) {
+        if (nav.parentElement !== slide) slide.appendChild(nav);
+      } else {
+        if (nav.parentElement !== panel) panel.appendChild(nav);
+      }
+    });
+  }
+  placeNavs();
+  if (navMQ.addEventListener) navMQ.addEventListener('change', placeNavs);
+  else navMQ.addListener(placeNavs);
+  var idx = 0, n = slides.length, locked = false, timer, INTERVAL = 6000;
+
+  function go(to) {
+    if (locked || to === idx) return;
+    locked = true;
+    var cur = slides[idx];
+    cur.classList.add('exiting');
+    slides[to].classList.add('pre-enter');
+    bgs[idx].classList.remove('active');
+    bgs[to].classList.add('active');
+    setTimeout(function() {
+      cur.classList.remove('active', 'exiting');
+      slides[to].classList.remove('pre-enter');
+      slides[to].classList.add('active');
+      idx = to;
+      locked = false;
+      startBar();
+    }, 450);
+  }
+  function next() { go((idx + 1) % n); }
+  function prev() { go((idx - 1 + n) % n); }
+  prevBtns.forEach(function(b) { b.addEventListener('click', function() { prev(); resetAuto(); }); });
+  nextBtns.forEach(function(b) { b.addEventListener('click', function() { next(); resetAuto(); }); });
+
+  function startBar() {
+    var bar = slides[idx].querySelector('.ev-edits-progress-bar');
+    if (!bar) return;
+    bar.style.transition = 'none';
+    bar.style.width = '0';
+    void bar.offsetWidth;
+    bar.style.transition = 'width ' + INTERVAL + 'ms linear';
+    bar.style.width = '100%';
+  }
+  function resetAuto() { clearInterval(timer); timer = setInterval(next, INTERVAL); startBar(); }
+  timer = setInterval(next, INTERVAL);
+  startBar();
+})();
+</script>
+</body>
+</html>
